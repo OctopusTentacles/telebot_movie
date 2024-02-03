@@ -10,7 +10,7 @@ from peewee import *
 # текущий dir:
 cur_dir = os.path.dirname(__file__)
 
-# Инициализация базы данных (SQLite) в текущем dir:
+# Инициализация файла базы данных (SQLite) в текущем dir:
 db = SqliteDatabase(os.path.join(cur_dir, 'user_history.db'))
 
 class UserRequest(Model):
