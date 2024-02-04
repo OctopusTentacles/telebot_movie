@@ -14,3 +14,8 @@ else:
 USERNAME = os.getenv('USERNAME')
 BOT_TOKEN = os.getenv('BOT_TOKEN')
 API_KEY = os.getenv('API_KEY')
+
+DEFAULT_COMMANDS = (
+    ('start', 'запустить бота'),
+    ('help', 'вывести справку')
+)
