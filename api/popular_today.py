@@ -36,3 +36,28 @@ def popular_today():
 
                 genres_data = content.get('genres', [])
                 genres = ', '.join(genre.get('name') for genre in genres_data)
+
+                countries_data = content.get('countries', [])
+                countries = ', '.join(country.get('name') for country in countries_data)
+
+                premiere_data = content.get('premiere', {}).get('world')
+                if premiere_data:
+                    premiere = premiere_data.split('T')[0]
+                else:
+                    premiere = 'неизвестно'
+
+                message_text = (
+                    f'{name}\n\n'
+                    f'длительность: {movieLength} мин.\n\n'
+
+                    f'премьера: {premiere}\n\n'
+                    f'жанр: {genres}.\n\n'
+                    f'страна: {countries}.\n\n'
+                    f'КП: {rating}\n'
+                )
+
+                if poster:
+                    image_io = BytesIO(requests.get(poster).content)
+                    # положить в кэш по id - message_text и poster:
+    
+    return message_text, image_io
