@@ -1,1 +1,1 @@
-from .popular_today import popular_today
+from . import popular_today
