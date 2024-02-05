@@ -12,7 +12,7 @@ from io import BytesIO
 
 def popular_today():
     url = (
-        f'https://api.kinopoisk.dev/v1.4/movie?page=1&limit=5&'
+        f'https://api.kinopoisk.dev/v1.4/movie?page=1&limit=1&'
         f'selectFields=name&selectFields=rating&selectFields=movieLength&'
         f'selectFields=genres&selectFields=countries&selectFields=poster&'
         f'selectFields=premiere&sortField=rating.kp&sortType=-1&'

@@ -10,5 +10,6 @@ from api import popular_today
 def bot_start(message: Message):
     bot.reply_to(message, f'Привет, {message.from_user.full_name}!')
 
-    text = popular_today.popular_today()
-    bot.send_message(message, f'Посмотри\n\n{text}')
+    bot.send_message(message.chat.id, 'СЕГОДНЯ ПОПУЛЯРНОЕ')
+    text, poster = popular_today.popular_today()
+    bot.send_photo(message.chat.id, poster, caption=text)
