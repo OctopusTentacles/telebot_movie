@@ -9,4 +9,6 @@ from telebot.types import CallbackQuery
 
 @bot.callback_query_handler(func=lambda call: call.data == 'pop')
 def bot_popular(call: CallbackQuery):
+    bot.send_message(call.message.chat.id, 'Выбери тип:')
+    
     bot.send_message(call.message.chat.id, 'Вот самое популярное:')
