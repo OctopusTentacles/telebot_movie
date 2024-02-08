@@ -12,7 +12,7 @@ from io import BytesIO
 
 def populars():
     url = (
-        ''
+        'https://api.kinopoisk.dev/v1.4/movie?page=1&limit=10&selectFields=name&selectFields=year&selectFields=countries&selectFields=genres&sortField=rating.kp&sortType=-1&type=movie&year=2024&lists=popular-films'
     )
 
     if url is not None:
@@ -25,7 +25,7 @@ def populars():
             contents = data.get('docs')
 
             count = 0
-            message_text = ''
+            message_text = '\n'
 
             for content in contents:
                 count += 1
@@ -41,10 +41,10 @@ def populars():
                 )
 
                 message_text += (
-                    f'{count}. {name}\n'
-                    f'  {year}\n'
-                    f'  {countries}\n'
-                    f'  {genres}\\n'
+                    f'{count}.  {name}\n'
+                    f'      {year}\n'
+                    f'      {countries}\n'
+                    f'      {genres}\n\n'
                 )
 
     return message_text

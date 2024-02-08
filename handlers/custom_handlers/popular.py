@@ -13,5 +13,8 @@ def bot_popular(call: CallbackQuery):
         call.message.chat.id, 'ПОДМЕНЮ. ВЫБЕРИ ТИП:', 
         reply_markup=type_keyboard()
     )
-    text = popular_films.populars()
-    bot.send_message(call.message.chat.id, 'Вот самое популярное:', text)
+
+@bot.callback_query_handler(func=lambda call: call.data == 'film')
+def callback_film_handler(call: CallbackQuery):
+    film_info = popular_films.populars()
+    bot.send_message(call.message.chat.id, film_info)
