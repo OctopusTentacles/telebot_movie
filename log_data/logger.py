@@ -22,8 +22,19 @@ logger.remove()
 logger.add(
     os.path.join(cur_dir, 'telebot_movie.log'),
     rotation='10MB',
+    compression='zip',
     level='INFO'
 )
 
-# можно обработать исключения - используем декоратор:
-# @logger.catch
+# можно обработать исключения - @logger.catch, но только исключения.
+# поэтому сделаем свой декоратор для инфо и ошибок:
+def log_decorator(func):
+    def wrapper(message):
+        try:
+            result = func(message)
+            logger.info(f'Function {func.__name__} run by {message.from_user.full_name}')
+            return result
+        except Exception as exc:
+            logger.error(f'An error occurred in {func.__name__}: {exc}')
+            raise
+    return wrapper
