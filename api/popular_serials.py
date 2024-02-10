@@ -14,10 +14,11 @@ from log_data import logger
 @logger.catch
 def populars():
     url = (
-        f'https://api.kinopoisk.dev/v1.4/movie?page=1&limit=10&'
-        f'selectFields=name&selectFields=year&selectFields=countries&'
-        f'selectFields=genres&sortField=rating.kp&sortType=-1&'
-        f'type=serial&year=2024&lists=popular-films'
+        f'https://api.kinopoisk.dev/v1.4/movie?page=1&'
+        f'limit=10&selectFields=name&selectFields=year&'
+        f'selectFields=countries&selectFields=genres&'
+        f'sortField=votes.kp&sortType=-1&'
+        f'type=tv-series&year=2022-2024&lists=popular-series'
     )
 
     if url is not None:

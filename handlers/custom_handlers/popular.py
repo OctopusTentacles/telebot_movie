@@ -23,4 +23,4 @@ def callback_film_handler(call: CallbackQuery):
 @bot.callback_query_handler(func=lambda call: call.data == 'serial')
 def callback_serial_handler(call: CallbackQuery):
     serial_info = popular_serials.populars()
-    bot.send_massage(call.message.chat.id, serial_info)
+    bot.send_message(call.message.chat.id, serial_info)
