@@ -18,4 +18,8 @@ def bot_popular(call: CallbackQuery):
 def callback_film_handler(call: CallbackQuery):
     film_info = popular_films.populars()
     bot.send_message(call.message.chat.id, film_info)
-    
+
+@bot.callback_query_handler(func=lambda call: call.data == 'serial')
+def callback_serial_handler(call: CallbackQuery):
+    serial_info = popular_serials.populars()
+    bot.send_massage(call.message.chat.id, serial_info)
