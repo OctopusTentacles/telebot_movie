@@ -8,8 +8,10 @@ import requests
 
 from config_data import config
 from io import BytesIO
+from log_data import logger
 
 
+@logger.catch
 def populars():
     url = (
         'https://api.kinopoisk.dev/v1.4/movie?page=1&limit=10&selectFields=name&selectFields=year&selectFields=countries&selectFields=genres&sortField=rating.kp&sortType=-1&type=movie&year=2024&lists=popular-films'
