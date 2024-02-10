@@ -18,3 +18,4 @@ def bot_popular(call: CallbackQuery):
 def callback_film_handler(call: CallbackQuery):
     film_info = popular_films.populars()
     bot.send_message(call.message.chat.id, film_info)
+    
