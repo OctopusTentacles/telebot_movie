@@ -25,11 +25,6 @@ def bot_start(message: Message):
     bot.send_photo(message.chat.id, photo=poster, caption=text)
 
     bot.send_message(
-        message.chat.id, 'три команды ', {'/main'}
+        message.chat.id, 'у тебя есть три команды'
     )
     
-
-@bot.message_handler(commands=['main'])
-@logger.catch
-def bot_main(message: Message):
-    bot.reply_to(message, 'ГЛАВНОЕ МЕНЮ:', reply_markup=main_keyboard())
