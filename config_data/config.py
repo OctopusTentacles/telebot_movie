@@ -22,6 +22,8 @@ API_KEY = os.getenv('API_KEY')
 
 DEFAULT_COMMANDS = (
     ('start', 'запустить бота'),
+    ('main', 'главное меню бота'),
+    ('history', 'краткая история пользователя'),
     ('help', 'вывести справку')
 )
 
