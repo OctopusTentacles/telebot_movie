@@ -3,6 +3,7 @@
 
 from api import popular_films
 from api import popular_serials
+from api import popular_cartoons
 from keyboards.inline import type_keyboard
 from loader import bot
 from telebot.types import CallbackQuery
@@ -29,4 +30,3 @@ def callback_serial_handler(call: CallbackQuery):
 def callback_cartoon_handler(call: CallbackQuery):
     cartoon_info = popular_cartoons.populars()
     bot.send_message(call.message.chat.id, cartoon_info)
-    
