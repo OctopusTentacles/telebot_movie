@@ -24,3 +24,9 @@ def callback_film_handler(call: CallbackQuery):
 def callback_serial_handler(call: CallbackQuery):
     serial_info = popular_serials.populars()
     bot.send_message(call.message.chat.id, serial_info)
+
+@bot.callback_query_handler(func=lambda call: call.data == 'cartoon')
+def callback_cartoon_handler(call: CallbackQuery):
+    cartoon_info = popular_cartoons.populars()
+    bot.send_message(call.message.chat.id, cartoon_info)
+    
