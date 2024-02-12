@@ -11,7 +11,9 @@ from dotenv import load_dotenv
 
 
 if find_dotenv is None:
-    sys.exit('Переменные окружения не загружены, так как отсутствует файл .env')
+    sys.exit(
+        'Переменные окружения не загружены, так как отсутствует файл .env'
+    )
 else:
     load_dotenv()
 
@@ -21,14 +23,14 @@ BOT_TOKEN = os.getenv('BOT_TOKEN')
 API_KEY = os.getenv('API_KEY')
 
 DEFAULT_COMMANDS = (
-    ('start', 'запустить бота'),
+    ('start', 'перезапустить бота'),
     ('main', 'главное меню бота'),
     ('history', 'краткая история пользователя'),
-    ('help', 'вывести справку')
+    ('help', 'вывести справку'),
 )
 
-CUSTOM_COMMANDS = (
-    ('pop_movies', 'получить популярные фильмы'),
-    ('pop_serials', 'получить популярные сериалы'),
-    ('pop_cartoons', 'получить популярные мультфильмы')
-)
+# CUSTOM_COMMANDS = (
+#     ('pop_movies', 'получить популярные фильмы'),
+#     ('pop_serials', 'получить популярные сериалы'),
+#     ('pop_cartoons', 'получить популярные мультфильмы'),
+# )
