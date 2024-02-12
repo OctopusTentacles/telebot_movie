@@ -26,9 +26,7 @@ def bot_start(message: Message):
 
     bot.send_message(
         message.chat.id, 
-        f'у тебя есть три основные команды:\n'
-        f'/main - ГЛАВНОЕ МЕНЮ\n'
-        f'/history - ТВОЯ КРАТКАЯ ИСТОРИЯ \n'
-        f'/help - СПРАВКА'
+        f'начни вводить "/" и увидешь подсказки...\n\n'
+        f'/help   -   СПРАВКА'
     )
     
