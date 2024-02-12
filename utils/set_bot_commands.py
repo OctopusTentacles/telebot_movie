@@ -18,3 +18,4 @@ def set_custom_commands(bot):
     bot.set_my_commands(
         [BotCommand(*i) for i in CUSTOM_COMMANDS]
     )
+    

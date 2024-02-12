@@ -25,6 +25,10 @@ def bot_start(message: Message):
     bot.send_photo(message.chat.id, photo=poster, caption=text)
 
     bot.send_message(
-        message.chat.id, 'у тебя есть три команды'
+        message.chat.id, 
+        f'у тебя есть три основные команды:\n'
+        f'/main - ГЛАВНОЕ МЕНЮ\n'
+        f'/history - ТВОЯ КРАТКАЯ ИСТОРИЯ \n'
+        f'/help - СПРАВКА'
     )
     

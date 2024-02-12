@@ -15,9 +15,10 @@ from log_data import logger
 def populars():
     url = (
         f'https://api.kinopoisk.dev/v1.4/movie?page=1&limit=10&'
-        f'selectFields=name&selectFields=year&selectFields=countries&'
-        f'selectFields=genres&sortField=rating.kp&sortType=-1&'
-        f'type=movie&year=2024&lists=popular-films'
+        f'selectFields=name&selectFields=year&'
+        f'selectFields=countries&selectFields=rating&'
+        f'sortField=rating.kp&sortType=-1&type=cartoon&'
+        f'year=2023-2024&lists=popular-films'
     )
 
     if url is not None:
@@ -36,10 +37,7 @@ def populars():
                 count += 1
                 name = content.get('name')
                 year = content.get('year')
-                genres_data = content.get('genres', [])
-                genres = ', '.join(
-                    genre.get('name') for genre in genres_data
-                )
+                rating = content.get('rating', {}).get('kp')
                 countries_data = content.get('countries', [])
                 countries = ', '.join(
                     country.get('name') for country in countries_data
@@ -49,7 +47,7 @@ def populars():
                     f'{count}.  {name}\n'
                     f'      {year}\n'
                     f'      {countries}\n'
-                    f'      {genres}\n\n'
+                    f'      КП: {rating}\n\n'
                 )
 
     return message_text
