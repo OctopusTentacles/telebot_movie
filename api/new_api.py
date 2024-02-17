@@ -1,6 +1,6 @@
 """Модуль для работы с API.
 
-Получает список ожидаемых премьер.
+Получает список новинок.
 """
 
 
@@ -12,12 +12,9 @@ from log_data import logger
 
 
 @logger.catch
-def awaits_api():
+def new_api():
     url = (
-        'https://api.kinopoisk.dev/v1.4/movie?page=1&limit=10&'
-        'selectFields=name&selectFields=premiere&selectFields=votes&'
-        'selectFields=poster&selectFields=countries&'
-        'sortField=votes.await&sortType=-1&year=2024-2025'
+        ''
     )
 
     if url is not None:
@@ -34,24 +31,21 @@ def awaits_api():
             for content in contents:
                 count += 1
                 name = content.get('name')
-
-                premiere_data = content.get('premiere', {}).get('world')
-                if premiere_data:
-                    premiere = premiere_data.split('T')[0]
-                else:
-                    premiere = 'неизвестно'
-
+                year = content.get('year')
+                genres_data = content.get('genres', [])
+                genres = ', '.join(
+                    genre.get('name') for genre in genres_data
+                )
                 countries_data = content.get('countries', [])
                 countries = ', '.join(
                     country.get('name') for country in countries_data
                 )
 
-                votes = content.get('votes', {}).get('await')
-
                 message_text += (
-                    f'{count},  {name}\n'
-                    f'      премьера: {premiere}\n'
-                    f'      страна: {countries}\n'
-                    f'      проголосовало: {votes}\n\n'
+                    f'{count}.  {name}\n'
+                    f'      {year}\n'
+                    f'      {countries}\n'
+                    f'      {genres}\n\n'
                 )
+
     return message_text
