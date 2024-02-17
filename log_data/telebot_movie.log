@@ -1,0 +1,54 @@
+2024-02-17 16:06:08.753 | ERROR    | telebot:_run_middlewares_and_handler:6720 - An error has been caught in function '_run_middlewares_and_handler', process 'MainProcess' (48899), thread 'WorkerThread1' (6184103936):
+Traceback (most recent call last):
+
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/threading.py", line 995, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x100777ce0>
+    └ <WorkerThread(WorkerThread1, started daemon 6184103936)>
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/threading.py", line 1038, in _bootstrap_inner
+    self.run()
+    │    └ <function WorkerThread.run at 0x100965440>
+    └ <WorkerThread(WorkerThread1, started daemon 6184103936)>
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/telebot/util.py", line 90, in run
+    task(*args, **kwargs)
+    │     │       └ {'handlers': [{'function': <function bot_popular at 0x101ff6f20>, 'pass_bot': False, 'filters': {'func': <function <lambda> a...
+    │     └ (<telebot.types.CallbackQuery object at 0x10203cb90>,)
+    └ <bound method TeleBot._run_middlewares_and_handler of <telebot.TeleBot object at 0x1005a6a90>>
+> File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/telebot/__init__.py", line 6720, in _run_middlewares_and_handler
+    result = handler['function'](message)
+             │                   └ <telebot.types.CallbackQuery object at 0x10203cb90>
+             └ {'function': <function callback_awaits at 0x101ff7600>, 'pass_bot': False, 'filters': {'func': <function <lambda> at 0x101ff7...
+
+  File "/Users/artem/Documents/PROGRAMMING/My/telebot/telebot_movie/handlers/custom_handlers/await_handler.py", line 14, in callback_awaits
+    bot.send_message(call.message.chat.id, 'ОЖИДАЕМЫЕ ПРЕМЬЕРЫ:', await_info)
+    │   │            │    │       │    │                          └ '\n1,  Аватар 3\n  премьера: 2025-12-17\n  страна: США\n  голоса: 116283\n\n2,  Дюна: Часть вторая\n  премьера: 2024-02-28\n ...
+    │   │            │    │       │    └ 961741922
+    │   │            │    │       └ <telebot.types.Chat object at 0x1020233d0>
+    │   │            │    └ <telebot.types.Message object at 0x10203ed90>
+    │   │            └ <telebot.types.CallbackQuery object at 0x10203cb90>
+    │   └ <function TeleBot.send_message at 0x101deeb60>
+    └ <telebot.TeleBot object at 0x1005a6a90>
+
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/telebot/__init__.py", line 1549, in send_message
+    apihelper.send_message(
+    │         └ <function send_message at 0x101dd5760>
+    └ <module 'telebot.apihelper' from '/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/telebot/api...
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/telebot/apihelper.py", line 264, in send_message
+    return _make_request(token, method_url, params=payload, method='post')
+           │             │      │                  └ {'chat_id': '961741922', 'text': 'ОЖИДАЕМЫЕ ПРЕМЬЕРЫ:', 'parse_mode': '\n1,  Аватар 3\n  премьера: 2025-12-17\n  страна: США\...
+           │             │      └ 'sendMessage'
+           │             └ '6891552753:AAFMurqBrj6ROAvut_IJQoxapZ7HQVZnaQE'
+           └ <function _make_request at 0x100d0e660>
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/telebot/apihelper.py", line 162, in _make_request
+    json_result = _check_result(method_name, result)
+                  │             │            └ <Response [400]>
+                  │             └ 'sendMessage'
+                  └ <function _check_result at 0x10122f880>
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/telebot/apihelper.py", line 189, in _check_result
+    raise ApiTelegramException(method_name, result, result_json)
+          │                    │            │       └ {'ok': False, 'error_code': 400, 'description': 'Bad Request: unsupported parse_mode'}
+          │                    │            └ <Response [400]>
+          │                    └ 'sendMessage'
+          └ <class 'telebot.apihelper.ApiTelegramException'>
+
+telebot.apihelper.ApiTelegramException: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: unsupported parse_mode
