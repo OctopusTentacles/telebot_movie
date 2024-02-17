@@ -12,7 +12,7 @@ from log_data import logger
 
 
 @logger.catch
-def awaits():
+def awaits_api():
     url = (
         f'https://api.kinopoisk.dev/v1.4/movie?page=1&limit=10&'
         f'selectFields=name&selectFields=premiere&selectFields=votes&'
