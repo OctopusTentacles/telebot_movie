@@ -26,7 +26,8 @@ def bot_start(message: Message):
 
     bot.send_message(
         message.chat.id, 
-        f'начни вводить "/" и увидешь подсказки...\n\n'
-        f'/help   -   СПРАВКА'
+        '/main - ГЛАВНОЕ МЕНЮ\n'
+        '/history - Краткая история пользователя\n'
+        '/help - СПРАВКА'
     )
     
