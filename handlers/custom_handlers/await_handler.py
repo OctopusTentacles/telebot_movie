@@ -11,4 +11,5 @@ from telebot.types import CallbackQuery
 @logger.catch
 def callback_awaits(call: CallbackQuery):
     await_info = awaits_api.awaits_api()
-    bot.send_message(call.message.chat.id, 'ОЖИДАЕМЫЕ ПРЕМЬЕРЫ:', await_info)
+    bot.send_message(call.message.chat.id, 'ОЖИДАЕМЫЕ ПРЕМЬЕРЫ:\n')
+    bot.send_message(call.message.chat.id, await_info)

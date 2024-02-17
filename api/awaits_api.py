@@ -50,8 +50,8 @@ def awaits_api():
 
                 message_text += (
                     f'{count},  {name}\n'
-                    f'  премьера: {premiere}\n'
-                    f'  страна: {countries}\n'
-                    f'  голоса: {votes}\n\n'
+                    f'      премьера: {premiere}\n'
+                    f'      страна: {countries}\n'
+                    f'      проголосовало: {votes}\n\n'
                 )
     return message_text
