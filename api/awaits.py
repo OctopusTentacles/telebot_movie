@@ -16,7 +16,7 @@ def awaits():
     url = (
         f'https://api.kinopoisk.dev/v1.4/movie?page=1&limit=10&'
         f'selectFields=name&selectFields=premiere&selectFields=votes&'
-        f'selectFields=poster&selectFields=countries&selectFields=videos&'
+        f'selectFields=poster&selectFields=countries&'
         f'sortField=votes.await&sortType=-1&year=2024-2025'
     )
 
@@ -40,3 +40,18 @@ def awaits():
                     premiere = premiere_data.split('T')[0]
                 else:
                     premiere = 'неизвестно'
+
+                countries_data = content.get('countries', [])
+                countries = ', '.join(
+                    country.get('name') for country in countries_data
+                )
+
+                votes = content.get('votes', {}).get('await')
+
+                message_text += (
+                    f'{count},  {name}\n'
+                    f'  премьера: {premiere}\n'
+                    f'  страна: {countries}\n'
+                    f'  голоса: {votes}\n\n'
+                )
+    return message_text
