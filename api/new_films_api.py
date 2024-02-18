@@ -12,7 +12,7 @@ from log_data import logger
 
 
 @logger.catch
-def new_api():
+def new_films_api():
     url = (
         ''
     )
