@@ -14,7 +14,12 @@ from log_data import logger
 @logger.catch
 def new_films_api():
     url = (
-        ''
+        'https://api.kinopoisk.dev/v1.4/movie?page=1&limit=7&'
+        'selectFields=name&selectFields=premiere&selectFields=poster&'
+        'selectFields=rating&notNullFields=name&notNullFields=premiere.world&'
+        'notNullFields=poster.url&notNullFields=rating.kp&'
+        'sortField=premiere.world&sortType=-1&type=movie&year=2024&'
+        'rating.kp=1-10'
     )
 
     if url is not None:
@@ -31,21 +36,14 @@ def new_films_api():
             for content in contents:
                 count += 1
                 name = content.get('name')
-                year = content.get('year')
-                genres_data = content.get('genres', [])
-                genres = ', '.join(
-                    genre.get('name') for genre in genres_data
-                )
-                countries_data = content.get('countries', [])
-                countries = ', '.join(
-                    country.get('name') for country in countries_data
-                )
+                premiere = content.get('premiere', {}).get('world')
+
+                rating = content.get('rating', {}).get('kp')
 
                 message_text += (
                     f'{count}.  {name}\n'
-                    f'      {year}\n'
-                    f'      {countries}\n'
-                    f'      {genres}\n\n'
+                    f'      {premiere}\n'
+                    f'      КП: {rating}\n'
                 )
 
     return message_text
