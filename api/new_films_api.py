@@ -37,13 +37,13 @@ def new_films_api():
                 count += 1
                 name = content.get('name')
                 premiere = content.get('premiere', {}).get('world')
-
+                premiere = premiere.split('T')[0]
                 rating = content.get('rating', {}).get('kp')
 
                 message_text += (
                     f'{count}.  {name}\n'
-                    f'      {premiere}\n'
-                    f'      КП: {rating}\n'
+                    f'      премьера: {premiere}\n'
+                    f'      КП: {rating}\n\n'
                 )
 
     return message_text

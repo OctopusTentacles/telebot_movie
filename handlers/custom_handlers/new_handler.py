@@ -21,5 +21,5 @@ def callback_new_film(call: CallbackQuery):
     bot.send_message(call.message.chat.id, film_info)
     bot.send_message(
         call.message.chat.id, 'НОВИНКИ: ВЫБЕРИ ТИП: или /main',
-        reply_markup=type_keyboard
+        reply_markup=type_keyboard()
     )
