@@ -6,15 +6,21 @@ from api import popular_serials
 from api import popular_cartoons
 from keyboards.inline import type_keyboard
 from loader import bot
+from states.user_input import UserInputState
 from telebot.types import CallbackQuery
 
 
-@bot.callback_query_handler(func=lambda call: call.data == 'pop')
+@bot.callback_query_handler(
+    func=lambda call: call.data == 'pop', state = UserInputState.pop
+)
 def bot_popular(call: CallbackQuery):
     bot.send_message(
         call.message.chat.id, 'ПОПУЛЯРНОЕ: ВЫБЕРИ ТИП:', 
         reply_markup=type_keyboard()
     )
+
+
+
 
 @bot.callback_query_handler(func=lambda call: call.data == 'film')
 def callback_film_handler(call: CallbackQuery):
