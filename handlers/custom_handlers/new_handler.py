@@ -23,6 +23,7 @@ def bot_new_content(call: CallbackQuery):
     )
 
 @bot.callback_query_handler(
+    state = UserInputState.new,
     func=lambda call: call.data == 'film'
 )
 def callback_new_film(call: CallbackQuery):

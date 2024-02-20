@@ -1,4 +1,0 @@
-2024-02-20 23:42:17.962 | INFO     | handlers.custom_handlers.new_handler:bot_new_content:18 - Current state: UserInputState:new
-2024-02-20 23:42:21.134 | INFO     | handlers.custom_handlers.new_handler:callback_new_film:30 - Current state: UserInputState:new
-2024-02-20 23:42:45.824 | INFO     | handlers.custom_handlers.popular:bot_popular:19 - Current state: UserInputState:pop
-2024-02-20 23:42:47.847 | INFO     | handlers.custom_handlers.new_handler:callback_new_film:30 - Current state: UserInputState:pop

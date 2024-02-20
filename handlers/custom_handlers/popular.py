@@ -14,7 +14,7 @@ from telebot.types import CallbackQuery
 @bot.callback_query_handler(func=lambda call: call.data == 'pop')
 def bot_popular(call: CallbackQuery):
     bot.set_state(call.message.chat.id, UserInputState.pop)
-
+        
     current_state = bot.get_state(call.message.chat.id)
     logger.info(f"Current state: {current_state}")
 
@@ -24,18 +24,11 @@ def bot_popular(call: CallbackQuery):
     )
 
 
-
-
 @bot.callback_query_handler(
-    func=lambda call: call.data == 'film' 
-    # and bot.get_state(call.message.chat.id) == UserInputState.pop
+        state = UserInputState.pop,
+        func=lambda call: call.data == 'film'
 )
 def callback_film_handler(call: CallbackQuery):
-    logger.info("Inside callback_film_handler")
-    
-    current_state = bot.get_state(call.message.chat.id)
-    logger.info(f"Current state: {current_state}")
-    
     film_info = popular_films.populars()
     bot.send_message(call.message.chat.id, film_info)
     bot.send_message(
@@ -44,7 +37,10 @@ def callback_film_handler(call: CallbackQuery):
     )
 
 
-@bot.callback_query_handler(func=lambda call: call.data == 'serial')
+@bot.callback_query_handler(
+        state = UserInputState.pop,
+        func=lambda call: call.data == 'serial'
+)
 def callback_serial_handler(call: CallbackQuery):
     serial_info = popular_serials.populars()
     bot.send_message(call.message.chat.id, serial_info)
@@ -53,7 +49,11 @@ def callback_serial_handler(call: CallbackQuery):
         reply_markup=type_keyboard()
     )
 
-@bot.callback_query_handler(func=lambda call: call.data == 'cartoon')
+
+@bot.callback_query_handler(
+        state = UserInputState.pop,
+        func=lambda call: call.data == 'cartoon'
+)
 def callback_cartoon_handler(call: CallbackQuery):
     cartoon_info = popular_cartoons.populars()
     bot.send_message(call.message.chat.id, cartoon_info)
