@@ -5,17 +5,22 @@ from api import new_films_api
 
 from keyboards.inline import type_keyboard
 from loader import bot
+from states.user_input import UserInputState
 from telebot.types import CallbackQuery
 
 
 @bot.callback_query_handler(func=lambda call: call.data == 'new')
 def bot_new_content(call: CallbackQuery):
+    bot.set_state(call.message.chat.id, state = UserInputState.new)
     bot.send_message(
         call.message.chat.id, 'НОВИНКИ: ВЫБЕРИ ТИП:',
         reply_markup=type_keyboard()
     )
 
-@bot.callback_query_handler(func=lambda call: call.data == 'film')
+@bot.callback_query_handler(
+    func=lambda call: call.data == 'film' and
+    bot.get_state(call.message.chat.id) == UserInputState.new
+)
 def callback_new_film(call: CallbackQuery):
     film_info = new_films_api.new_films_api()
     bot.send_message(call.message.chat.id, film_info)
@@ -23,4 +28,3 @@ def callback_new_film(call: CallbackQuery):
         call.message.chat.id, 'НОВИНКИ: ВЫБЕРИ ТИП:     или     /main',
         reply_markup=type_keyboard()
     )
-    

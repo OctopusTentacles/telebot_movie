@@ -17,3 +17,4 @@ from telebot.types import Message
 @logger.catch
 def bot_main(message: Message):
     bot.reply_to(message, 'ГЛАВНОЕ МЕНЮ:', reply_markup=main_keyboard())
+    
