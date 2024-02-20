@@ -10,10 +10,9 @@ from states.user_input import UserInputState
 from telebot.types import CallbackQuery
 
 
-@bot.callback_query_handler(
-    func=lambda call: call.data == 'pop', state = UserInputState.pop
-)
+@bot.callback_query_handler(func=lambda call: call.data == 'pop')
 def bot_popular(call: CallbackQuery):
+    bot.set_state(call.message.chat.id, UserInputState.pop)
     bot.send_message(
         call.message.chat.id, 'ПОПУЛЯРНОЕ: ВЫБЕРИ ТИП:', 
         reply_markup=type_keyboard()
@@ -22,7 +21,10 @@ def bot_popular(call: CallbackQuery):
 
 
 
-@bot.callback_query_handler(func=lambda call: call.data == 'film')
+@bot.callback_query_handler(
+    func=lambda call: call.data == 'film' and
+    bot.get_state(call.message.chat.id) == UserInputState.pop
+)
 def callback_film_handler(call: CallbackQuery):
     film_info = popular_films.populars()
     bot.send_message(call.message.chat.id, film_info)
