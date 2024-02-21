@@ -12,13 +12,8 @@ from telebot.types import Message
 
 @bot.message_handler(commands=['start'])
 @logger.catch
-# @log_decorator
 def bot_start(message: Message):
     bot.reply_to(message, f'Привет, {message.from_user.full_name}!')
-
-    # logger.info(
-    #     f'user {message.from_user.full_name} запустил бота!'
-    # )
 
     bot.send_message(message.chat.id, 'СЕГОДНЯ ПОПУЛЯРНОЕ:')
     text, poster = popular_today.popular_today()

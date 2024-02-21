@@ -1,4 +1,0 @@
-2024-02-21 13:45:20.818 | INFO     | handlers.custom_handlers.new_handler:bot_new_content:19 - Current state: UserInputState:new
-2024-02-21 13:46:13.725 | INFO     | handlers.custom_handlers.popular:bot_popular:19 - Current state: UserInputState:pop
-2024-02-21 13:47:52.290 | INFO     | handlers.custom_handlers.new_handler:bot_new_content:19 - Current state: UserInputState:new
-2024-02-21 14:14:17.089 | INFO     | handlers.custom_handlers.new_handler:bot_new_content:19 - Current state: UserInputState:new
