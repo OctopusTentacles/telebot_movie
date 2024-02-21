@@ -32,7 +32,7 @@ def callback_new_film(call: CallbackQuery):
     film_info = new_films_api.new_films_api()
     bot.send_message(call.message.chat.id, film_info)
     bot.send_message(
-        call.message.chat.id, 'НОВИНКИ: ВЫБЕРИ ТИП:     или     /main',
+        call.message.chat.id, 'НОВИНКИ: ВЫБЕРИ ТИП:',
         reply_markup=type_keyboard()
     )
 
@@ -45,6 +45,19 @@ def callback_new_serial(call: CallbackQuery):
     serial_info = new_serials_api.new_serials_api()
     bot.send_message(call.message.chat.id, serial_info)
     bot.send_message(
-        call.message.chat.id, 'НОВИНКИ: ВЫБЕРИ ТИП:     или     /main',
+        call.message.chat.id, 'НОВИНКИ: ВЫБЕРИ ТИП:',
+        reply_markup=type_keyboard()
+    )
+
+
+@bot.callback_query_handler(
+    state = UserInputState.new,
+    func=lambda call: call.data == 'cartoon'
+)
+def callback_new_cartoon(call: CallbackQuery):
+    cartoon_info = new_cartoon_api.new_cartoon_api()
+    bot.send_message(call.message.chat.id, cartoon_info)
+    bot.send_message(
+        call.message.chat.id, 'НОВИНКИ: ВЫБЕРИ ТИП:',
         reply_markup=type_keyboard()
     )
