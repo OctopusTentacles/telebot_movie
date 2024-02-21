@@ -1,6 +1,6 @@
 """Модуль для работы с API.
 
-Получает список новинок - фильмы.
+Получает список новинок - сериалы.
 """
 
 
@@ -18,7 +18,7 @@ def new_films_api():
         'selectFields=name&selectFields=premiere&selectFields=poster&'
         'selectFields=rating&notNullFields=name&notNullFields=premiere.world&'
         'notNullFields=poster.url&notNullFields=rating.kp&'
-        'sortField=premiere.world&sortType=-1&type=movie&year=2024&'
+        'sortField=premiere.world&sortType=-1&type=tv-series&year=2024&'
         'rating.kp=1-10'
     )
 

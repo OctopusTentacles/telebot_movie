@@ -22,6 +22,7 @@ def bot_new_content(call: CallbackQuery):
         reply_markup=type_keyboard()
     )
 
+
 @bot.callback_query_handler(
     state = UserInputState.new,
     func=lambda call: call.data == 'film'
