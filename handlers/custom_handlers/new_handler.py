@@ -3,6 +3,7 @@
 
 from api import new_films_api
 from api import new_serials_api
+from api import new_cartoons_api
 
 from keyboards.inline import type_keyboard
 from loader import bot
@@ -55,7 +56,7 @@ def callback_new_serial(call: CallbackQuery):
     func=lambda call: call.data == 'cartoon'
 )
 def callback_new_cartoon(call: CallbackQuery):
-    cartoon_info = new_cartoon_api.new_cartoon_api()
+    cartoon_info = new_cartoons_api.new_cartoons_api()
     bot.send_message(call.message.chat.id, cartoon_info)
     bot.send_message(
         call.message.chat.id, 'НОВИНКИ: ВЫБЕРИ ТИП:',
