@@ -2,6 +2,7 @@
 
 
 from api import new_films_api
+from api import new_serials_api
 
 from keyboards.inline import type_keyboard
 from loader import bot
@@ -28,11 +29,21 @@ def bot_new_content(call: CallbackQuery):
     func=lambda call: call.data == 'film'
 )
 def callback_new_film(call: CallbackQuery):
-    current_state = bot.get_state(call.message.chat.id)
-    logger.info(f"Current state: {current_state}")
-
     film_info = new_films_api.new_films_api()
     bot.send_message(call.message.chat.id, film_info)
+    bot.send_message(
+        call.message.chat.id, 'НОВИНКИ: ВЫБЕРИ ТИП:     или     /main',
+        reply_markup=type_keyboard()
+    )
+
+
+@bot.callback_query_handler(
+    state = UserInputState.new,
+    func=lambda call: call.data == 'serial'
+)
+def callback_new_serial(call: CallbackQuery):
+    serial_info = new_serials_api.new_serials_api()
+    bot.send_message(call.message.chat.id, serial_info)
     bot.send_message(
         call.message.chat.id, 'НОВИНКИ: ВЫБЕРИ ТИП:     или     /main',
         reply_markup=type_keyboard()

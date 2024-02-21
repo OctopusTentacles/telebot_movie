@@ -12,7 +12,7 @@ from log_data import logger
 
 
 @logger.catch
-def new_films_api():
+def new_serials_api():
     url = (
         'https://api.kinopoisk.dev/v1.4/movie?page=1&limit=7&'
         'selectFields=name&selectFields=premiere&selectFields=poster&'
