@@ -12,6 +12,7 @@ class UserInputState(StatesGroup):
     pop = State()
     wait = State()
     new = State()
+    rand = State()
 
     film = State()
     serial = State()
