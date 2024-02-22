@@ -17,7 +17,7 @@ def bot_new_content(call: CallbackQuery):
     bot.set_state(call.message.chat.id, state = UserInputState.new)
 
     current_state = bot.get_state(call.message.chat.id)
-    logger.info(f"Current state: {current_state}")
+    logger.info(f'Current state: {current_state}')
 
     bot.send_message(
         call.message.chat.id, 'НОВИНКИ: ВЫБЕРИ ТИП:',
