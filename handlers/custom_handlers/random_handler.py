@@ -23,3 +23,19 @@ def bot_rand_content(call: CallbackQuery):
         call.message.chat.id, 'РАНДОМ: ВЫБЕРИ ТИП:',
         reply_markup=type_keyboard()
     )
+
+@bot.callback_query_handler(
+    state = UserInputState.rand,
+    func=lambda call: call.data == 'film'
+)
+def callback_rand_film(call: CallbackQuery):
+    text1, text2, poster = random_films_api.random_films_api()
+
+    bot.send_message(
+        call.message.chat.id, text1, text2
+    )
+    bot.send_message(
+        call.message.chat.id, 'РАНДОМ: ВЫБЕРИ ТИП:',
+        reply_markup=type_keyboard()
+    )
+    
