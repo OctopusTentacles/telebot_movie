@@ -28,6 +28,7 @@ def bot_rand_content(call: CallbackQuery):
         reply_markup=type_keyboard()
     )
 
+# ====================================================================
 @bot.callback_query_handler(
     state = UserInputState.rand,
     func=lambda call: call.data == 'film'
@@ -35,32 +36,33 @@ def bot_rand_content(call: CallbackQuery):
 def callback_rand_film(call: CallbackQuery):
     text1, text2, poster = random_films_api.random_films_api()
 
-    if poster:
-        logger.info(f"Poster URL: {poster}")  # Добавьте эту строку для проверки URL постера
-   
-        # декодирование постера:
-        # poster_bytes = base64.b64decode(poster)
-        # poster_io = BytesIO(poster_bytes)
-
-        response = requests.post(
-            f"https://api.telegram.org/bot{bot.token}/sendPhoto",
-            data={
-                "chat_id": call.message.chat.id,
-                "photo": poster,
-                "caption": text1
-            }
+    # отправляем постер с подписью в чат,
+    # постер содержит URL так как иначе значение не передавалось,
+    # говорил что слишком большой объем данных.
+    response = requests.post(
+        f"https://api.telegram.org/bot{bot.token}/sendPhoto",
+        data={
+            "chat_id": call.message.chat.id,
+            "photo": poster,
+            "caption": text1
+        }
+    )
+    # Обработка ответа от сервера Telegram
+    if response.status_code != 200:
+        logger.error(
+            f"Failed to send photo: {response.status_code}, 
+            {response.text}"
         )
-        
-        # Обработка ответа от сервера Telegram
-        if response.status_code != 200:
-            logger.error(f"Failed to send photo: {response.status_code}, {response.text}")
-
-
-        bot.send_message(call.message.chat.id, text2[:4096])
-        if len(text2) > 4096:
-            bot.send_message(call.message.chat.id, text2[4096:])
+    # отправляем описание,
+    # может превышать макс размер 4096.
+    bot.send_message(call.message.chat.id, text2[:4096])
+    if len(text2) > 4096:
+        bot.send_message(call.message.chat.id, text2[4096:])
 
     bot.send_message(
         call.message.chat.id, 'РАНДОМ: ВЫБЕРИ ТИП:',
         reply_markup=type_keyboard()
     )
+
+# ====================================================================
+

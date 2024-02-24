@@ -4,7 +4,6 @@
 """
 
 
-import base64
 import requests
 
 from config_data import config
@@ -61,7 +60,6 @@ def random_films_api():
                 person['name'] is not None
             )
 
-
             description = content.get('description')
 
             rate_kp = content.get('rating', {}).get('kp')
@@ -81,11 +79,6 @@ def random_films_api():
         message_text_2 = (
             f'описание:\n{description}.\n\n'
         )
-
-        # if poster:
-        #     image_io = BytesIO(requests.get(poster).content)
-        #     poster_b64 = base64.b64encode(
-        #         image_io.getvalue()).decode('utf-8')
 
         return message_text_1, message_text_2, poster
     else:
