@@ -26,45 +26,46 @@ def random_films_api():
 
     if response.status_code == 200:
         data = response.json()
-        content = data[0]
+        contents = [data]
 
-        poster = content.get('poster', {}).get('previewUrl')
-        name = content.get('name')
-        year = content.get('year')
+        for content in contents:
+            poster = content.get('poster', {}).get('previewUrl')
+            name = content.get('name')
+            year = content.get('year')
 
-        movieLength = content.get('movieLength')
-        seriesLength = content.get('seriesLength')
-        if seriesLength is None:
-            length = movieLength
-        else:
-            length = seriesLength
+            movieLength = content.get('movieLength')
+            seriesLength = content.get('seriesLength')
+            if seriesLength is None:
+                length = movieLength
+            else:
+                length = seriesLength
 
-        genres_data = content.get('genres', [])
-        genres = ', '.join(genre.get('name') for genre in genres_data)
+            genres_data = content.get('genres', [])
+            genres = ', '.join(genre.get('name') for genre in genres_data)
 
-        countries_data = content.get('countries',  [])
-        countries = ', '.join(
-            country.get('name') for country in countries_data
-        )
-        
-        persons_data = content.get('persons', [])
-        directors = ', '.join(
-            person['name'] for person in persons_data 
-            if person['profession'] == 'режиссеры' and
-            person['name'] is not None
-        )
+            countries_data = content.get('countries',  [])
+            countries = ', '.join(
+                country.get('name') for country in countries_data
+            )
+            
+            persons_data = content.get('persons', [])
+            directors = ', '.join(
+                person['name'] for person in persons_data 
+                if person['profession'] == 'режиссеры' and
+                person['name'] is not None
+            )
 
-        actors = ', '.join(
-            person['name'] for person in persons_data
-            if person['profession'] == 'актеры' and
-            person['name'] is not None
-        )
+            actors = ', '.join(
+                person['name'] for person in persons_data
+                if person['profession'] == 'актеры' and
+                person['name'] is not None
+            )
 
 
-        description = content.get('description')
+            description = content.get('description')
 
-        rate_kp = content.get('rating', {}).get('kp')
-        rate_imdb = content.get('rating', {}).get('imdb')
+            rate_kp = content.get('rating', {}).get('kp')
+            rate_imdb = content.get('rating', {}).get('imdb')
 
         message_text_1 = (
             f'{name}   ({year})\n\n'
@@ -81,12 +82,12 @@ def random_films_api():
             f'описание:\n{description}.\n\n'
         )
 
-        if poster:
-            image_io = BytesIO(requests.get(poster).content)
-            poster_b64 = base64.b64encode(
-                image_io.getvalue()).decode('utf-8')
+        # if poster:
+        #     image_io = BytesIO(requests.get(poster).content)
+        #     poster_b64 = base64.b64encode(
+        #         image_io.getvalue()).decode('utf-8')
 
-        return message_text_1, message_text_2, poster_b64
+        return message_text_1, message_text_2, poster
     else:
         logger.error(
             'Failed to fetch random film data from API.'
