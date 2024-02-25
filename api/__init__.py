@@ -7,3 +7,4 @@ from . import new_films_api
 from . import new_serials_api
 from . import new_cartoons_api
 from . import random_films_api
+from . import random_serial_api
