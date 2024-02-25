@@ -5,8 +5,8 @@ import base64
 import requests
 
 from api import random_films_api
-# from api import random_serials_api
-# from api import random_cartoons_api
+from api import random_serial_api
+from api import random_cartoons_api
 
 from io import BytesIO
 from keyboards.inline import type_keyboard
@@ -99,4 +99,36 @@ def callback_rand_film(call: CallbackQuery):
     )
 
 # ====================================================================
+@bot.callback_query_handler(
+    state = UserInputState.rand,
+    func=lambda call: call.data == 'cartoons'
+)
+def callback_rand_film(call: CallbackQuery):
+    text1, text2, poster = random_cartoons_api.random_cartoons_api()
 
+    # отправляем постер с подписью в чат,
+    # постер содержит URL так как иначе значение не передавалось,
+    # говорил что слишком большой объем данных.
+    response = requests.post(
+        f"https://api.telegram.org/bot{bot.token}/sendPhoto",
+        data={
+            "chat_id": call.message.chat.id,
+            "photo": poster,
+            "caption": text1
+        }
+    )
+    # Обработка ответа от сервера Telegram
+    if response.status_code != 200:
+        logger.error(
+            f"Failed to send photo: {response.status_code}, {response.text}"
+        )
+    # отправляем описание,
+    # может превышать макс размер 4096.
+    bot.send_message(call.message.chat.id, text2[:4096])
+    if len(text2) > 4096:
+        bot.send_message(call.message.chat.id, text2[4096:])
+
+    bot.send_message(
+        call.message.chat.id, 'РАНДОМ: ВЫБЕРИ ТИП:',
+        reply_markup=type_keyboard()
+    )
