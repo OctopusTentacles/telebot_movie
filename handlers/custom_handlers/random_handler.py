@@ -69,7 +69,7 @@ def callback_rand_film(call: CallbackQuery):
     func=lambda call: call.data == 'serial'
 )
 def callback_rand_film(call: CallbackQuery):
-    text1, text2, poster = random_serials_api.random_serials_api()
+    text1, text2, poster = random_serial_api.random_serial_api()
 
     # отправляем постер с подписью в чат,
     # постер содержит URL так как иначе значение не передавалось,
