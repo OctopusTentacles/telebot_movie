@@ -101,7 +101,7 @@ def callback_rand_film(call: CallbackQuery):
 # ====================================================================
 @bot.callback_query_handler(
     state = UserInputState.rand,
-    func=lambda call: call.data == 'cartoons'
+    func=lambda call: call.data == 'cartoon'
 )
 def callback_rand_film(call: CallbackQuery):
     text1, text2, poster = random_cartoons_api.random_cartoons_api()
