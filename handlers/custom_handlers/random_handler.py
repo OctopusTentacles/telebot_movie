@@ -50,8 +50,42 @@ def callback_rand_film(call: CallbackQuery):
     # Обработка ответа от сервера Telegram
     if response.status_code != 200:
         logger.error(
-            f"Failed to send photo: {response.status_code}, 
-            {response.text}"
+            f"Failed to send photo: {response.status_code}, {response.text}"
+        )
+    # отправляем описание,
+    # может превышать макс размер 4096.
+    bot.send_message(call.message.chat.id, text2[:4096])
+    if len(text2) > 4096:
+        bot.send_message(call.message.chat.id, text2[4096:])
+
+    bot.send_message(
+        call.message.chat.id, 'РАНДОМ: ВЫБЕРИ ТИП:',
+        reply_markup=type_keyboard()
+    )
+
+# ====================================================================
+@bot.callback_query_handler(
+    state = UserInputState.rand,
+    func=lambda call: call.data == 'serial'
+)
+def callback_rand_film(call: CallbackQuery):
+    text1, text2, poster = random_serials_api.random_serials_api()
+
+    # отправляем постер с подписью в чат,
+    # постер содержит URL так как иначе значение не передавалось,
+    # говорил что слишком большой объем данных.
+    response = requests.post(
+        f"https://api.telegram.org/bot{bot.token}/sendPhoto",
+        data={
+            "chat_id": call.message.chat.id,
+            "photo": poster,
+            "caption": text1
+        }
+    )
+    # Обработка ответа от сервера Telegram
+    if response.status_code != 200:
+        logger.error(
+            f"Failed to send photo: {response.status_code}, {response.text}"
         )
     # отправляем описание,
     # может превышать макс размер 4096.
