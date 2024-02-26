@@ -1,4 +1,0 @@
-2024-02-26 01:46:41.318 | INFO     | handlers.default_handlers.main_menu:bot_main:21 - Current state: UserInputState:main
-2024-02-26 01:46:48.268 | INFO     | handlers.custom_handlers.random_handler:bot_rand_content:24 - Current state: UserInputState:rand
-2024-02-26 01:51:00.248 | INFO     | handlers.default_handlers.main_menu:bot_main:21 - Current state: UserInputState:main
-2024-02-26 01:51:03.341 | INFO     | handlers.custom_handlers.random_handler:bot_rand_content:24 - Current state: UserInputState:rand
