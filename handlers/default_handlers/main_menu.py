@@ -1,15 +1,11 @@
 """Модуль команды main."""
 
 
-from api import popular_today
 from keyboards.inline import main_keyboard
 from loader import bot
 from log_data import logger
 from states.user_input import UserInputState
 from telebot.types import Message
-
-
-
 
 
 @bot.message_handler(commands=['main'])
