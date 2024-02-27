@@ -1,14 +1,12 @@
 """Модуль команды rand из кнопки ГЛАВНОГО МЕНЮ Рандом."""
 
 
-import base64
 import requests
 
 from api import random_films_api
 from api import random_serial_api
 from api import random_cartoons_api
 
-from io import BytesIO
 from keyboards.inline import type_keyboard
 from loader import bot
 from log_data import logger
