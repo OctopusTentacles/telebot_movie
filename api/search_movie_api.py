@@ -13,4 +13,4 @@ from log_data import logger
 
 @logger.catch
 def search_movie_api():
-    
+    ...

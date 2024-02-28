@@ -7,6 +7,7 @@ from loader import bot
 from log_data import logger
 from states.user_input import UserInputState
 from telebot.types import CallbackQuery
+from urllib.parse import quote
 
 
 @bot.callback_query_handler(func=lambda call: call.data == 'movie')
@@ -18,5 +19,13 @@ def user_input_title(call: CallbackQuery):
 
     bot.send_message(call.message.chat.id, 'Введи название фильма:')
 
-    user_title = call.text.strip()
-    
+# Получить введенное пользователем название и закодировать:
+@bot.message_handler(state = UserInputState.search_movie)
+def encoding_title(message):
+    user_title = message.text.strip()
+    print(user_title)
+
+    encoding_title = quote(user_title)
+    print(encoding_title)
+
+

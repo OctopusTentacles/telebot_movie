@@ -1,0 +1,5 @@
+2024-02-28 11:58:24.201 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-02-28 12:00:46.878 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-02-28 12:00:48.539 | INFO     | handlers.custom_handlers.search_movie:user_input_title:18 - Current state: UserInputState:search_movie
+2024-02-28 13:27:03.502 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-02-28 13:27:05.670 | INFO     | handlers.custom_handlers.search_movie:user_input_title:18 - Current state: UserInputState:search_movie
