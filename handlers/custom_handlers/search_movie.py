@@ -1,7 +1,7 @@
 """Модуль команды movie из кнопки ГЛАВНОГО МЕНЮ - Поиск фильма."""
 
 
-
+from api import create_url_api
 
 from loader import bot
 from log_data import logger
@@ -28,4 +28,5 @@ def encoding_title(message):
     encoding_title = quote(user_title)
     print(encoding_title)
 
-
+    url = create_url_api.create_url_api(encoding_title)
+    print(url)
