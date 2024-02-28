@@ -13,6 +13,7 @@ class UserInputState(StatesGroup):
     wait = State()
     new = State()
     rand = State()
+    search_movie = State()
 
     film = State()
     serial = State()

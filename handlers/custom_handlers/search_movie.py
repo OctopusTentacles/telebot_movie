@@ -17,5 +17,6 @@ def user_input_title(call: CallbackQuery):
     logger.info(f'Current state: {current_state}')
 
     bot.send_message(call.message.chat.id, 'Введи название фильма:')
-    bot.register_next_step_handler(call.message, create_url, bot)
 
+    user_title = call.text.strip()
+    
