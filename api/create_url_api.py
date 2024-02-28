@@ -1,18 +1,28 @@
 """Модуль для работы с API.
 
-Ищет фильм по названию.
+Из названия пользователя ищет информацию - ID,
+Возвращает URL с ID - это дает полную информацию.
 """
 
 
 import requests
 
 from config_data import config
-from io import BytesIO
 from log_data import logger
+from typing import Union
 
 
 @logger.catch
-def search_movie_api(encoding_title):
+def create_url_api(encoding_title: Union[str, bytes]) -> str:
+    """
+    Формирует URL API для поиска информации по запросу пользователя.
+
+    Args:
+        encoding_title (str, bytes): Закодированное название фильма.
+
+    Returns:
+        str: URL API для получения полной информации.
+    """
     url = (
         'https://api.kinopoisk.dev/v1.4/movie/search?page=1&limit=1&'
         f'query={encoding_title}'
@@ -29,5 +39,7 @@ def search_movie_api(encoding_title):
         # берем ID, формируем ссылку по ID - это даст полную информацию.
         for content in contents:
             id = content.get('id')
-            
+
         url = f'https://api.kinopoisk.dev/v1.4/movie/{id}'
+
+    return url
