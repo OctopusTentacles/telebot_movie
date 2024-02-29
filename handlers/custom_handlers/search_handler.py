@@ -19,8 +19,12 @@ def user_input_title(call: CallbackQuery):
 
     bot.send_message(call.message.chat.id, 'Введи название фильма:')
 
+
+@bot.callback_query_handler(func=lambda call: call.data == 'person')
+def user_input_name(call: CallbackQuery):
+    bot.set_state()
+
 # Получить введенное пользователем название и закодировать:
-@bot.message_handler(state = UserInputState.search_movie)
 def encoding_title(message):
     user_title = message.text.strip()
     print(user_title)

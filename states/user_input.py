@@ -14,6 +14,7 @@ class UserInputState(StatesGroup):
     new = State()
     rand = State()
     search_movie = State()
+    search_name = State()
 
     film = State()
     serial = State()
