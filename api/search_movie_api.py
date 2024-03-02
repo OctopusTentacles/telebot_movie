@@ -71,6 +71,30 @@ def search_movie_api(url):
             else:
                 trailer = 'не сняли'
 
+        message_text_1 = (
+            f'{title}   ({year})\n\n'
+            f'премьера: {premiere}\n\n'
+            f'жанр: {genres}.\n\n'
+            f'страна: {countries}.\n\n'
+            f'режиссер: {directors}\n\n'
+            f'актеры: {actors}\n\n'
+            f'длительность: {length} мин.\n\n'
+            f'КП: {rate_kp}\n'
+            f'IMDB: {rate_imdb}\n\n'
+        )
+        message_text_2 = (
+            f'описание:\n{description}.\n\n'
+            f'трейлер: {trailer}'
+        )
+
+        return message_text_1, message_text_2, poster
+    else:
+        logger.error(
+            'Failed to fetch SEARCH MOVIE data from API.'
+            f'Status code: {response.status_code}'
+        )
+        return None, None, None
 
 
-    ...
+
+
