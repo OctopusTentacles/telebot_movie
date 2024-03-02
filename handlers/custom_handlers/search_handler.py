@@ -35,9 +35,11 @@ def user_input_name(call: CallbackQuery):
 
     bot.send_message(call.message.chat.id, 'Введи имя:')
 
-
+    print(call.data)
 
 # Получить введенное пользователем название и закодировать:
+@bot.message_handler(state=UserInputState.search_movie)
+@bot.message_handler(state=UserInputState.search_name)
 def encoding_title(message):
     global url
     user_input = message.text.strip()
@@ -49,13 +51,25 @@ def encoding_title(message):
     url = create_url_api.create_url_api(encoding_input)
     print(url)
 
+    
 
 
-@bot.callback_query_handler(state = UserInputState.search_movie)
+
+@bot.callback_query_handler(
+    func=lambda call: call.data == ''
+)
 def callback_search_movie(call: CallbackQuery):
     global url
 
+    print(call.data)
+    print('callback_search_movie', url)
+    print(bot.get_state(call.message.chat.id))
+
     text_1, text_2, poster = search_movie_api.search_movie_api(url)
+
+    print("Text 1:", text_1)
+    print("Text 2:", text_2)
+    print("Poster URL:", poster)
 
     response = requests.post(
         f"https://api.telegram.org/bot{bot.token}/sendPhoto",
