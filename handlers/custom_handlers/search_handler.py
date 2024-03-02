@@ -1,13 +1,19 @@
 """Модуль команды movie из кнопки ГЛАВНОГО МЕНЮ - Поиск фильма."""
 
 
+import requests
+
 from api import create_url_api
+from api import search_movie_api
 
 from loader import bot
 from log_data import logger
 from states.user_input import UserInputState
 from telebot.types import CallbackQuery
 from urllib.parse import quote
+
+
+url = None
 
 
 @bot.callback_query_handler(func=lambda call: call.data == 'movie')
@@ -33,6 +39,7 @@ def user_input_name(call: CallbackQuery):
 
 # Получить введенное пользователем название и закодировать:
 def encoding_title(message):
+    global url
     user_input = message.text.strip()
     print(user_input)
 
@@ -41,3 +48,26 @@ def encoding_title(message):
 
     url = create_url_api.create_url_api(encoding_input)
     print(url)
+
+
+
+@bot.callback_query_handler(state = UserInputState.search_movie)
+def callback_search_movie(call: CallbackQuery):
+    global url
+
+    text_1, text_2, poster = search_movie_api.search_movie_api(url)
+
+    response = requests.post(
+        f"https://api.telegram.org/bot{bot.token}/sendPhoto",
+        data={
+            "chat_id": call.message.chat.id,
+            "photo": poster,
+            "caption": text_1
+        }
+    )
+    # Обработка ответа от сервера Telegram
+    if response.status_code != 200:
+        logger.error(
+            f"Failed to send photo: {response.status_code}, {response.text}"
+        )
+
