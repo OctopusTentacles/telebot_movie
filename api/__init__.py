@@ -10,3 +10,4 @@ from . import random_films_api
 from . import random_serial_api
 from . import random_cartoons_api
 from . import create_url_api
+from . import search_movie_api
