@@ -13,7 +13,15 @@ from telebot.types import CallbackQuery
 from urllib.parse import quote
 
 
-url = None
+# Получить введенное пользователем название и закодировать:
+def encoding_title(message):
+    user_input = message.text.strip()
+    print(user_input)
+
+    encoding_input = quote(user_input)
+    print(encoding_input)
+
+    return create_url_api.create_url_api(encoding_input)
 
 
 @bot.callback_query_handler(func=lambda call: call.data == 'movie')
@@ -24,6 +32,17 @@ def user_input_title(call: CallbackQuery):
     logger.info(f'Current state: {current_state}')
 
     bot.send_message(call.message.chat.id, 'Введи название фильма:')
+    url = bot.register_next_step_handler(call.message, encoding_title)
+
+
+    text_1, text_2, poster = search_movie_api.search_movie_api(url)
+
+    print("Text 1:", text_1)
+    print("Text 2:", text_2)
+    print("Poster URL:", poster)
+
+
+
 
 
 @bot.callback_query_handler(func=lambda call: call.data == 'person')
@@ -35,28 +54,14 @@ def user_input_name(call: CallbackQuery):
 
     bot.send_message(call.message.chat.id, 'Введи имя:')
 
-    print(call.data)
 
-# Получить введенное пользователем название и закодировать:
-@bot.message_handler(state=UserInputState.search_movie)
-@bot.message_handler(state=UserInputState.search_name)
-def encoding_title(message):
-    global url
-    user_input = message.text.strip()
-    print(user_input)
-
-    encoding_input = quote(user_input)
-    print(encoding_input)
-
-    url = create_url_api.create_url_api(encoding_input)
-    print(url)
 
     
 
 
 
 @bot.callback_query_handler(
-    func=lambda call: call.data == ''
+    func=lambda call: call.data == 'movie'
 )
 def callback_search_movie(call: CallbackQuery):
     global url
