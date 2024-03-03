@@ -7,3 +7,5 @@
 2024-03-02 16:46:08.464 | INFO     | handlers.custom_handlers.search_handler:user_input_title:24 - Current state: UserInputState:search_movie
 2024-03-02 17:01:42.087 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
 2024-03-02 17:01:44.153 | INFO     | handlers.custom_handlers.search_handler:user_input_title:24 - Current state: UserInputState:search_movie
+2024-03-02 19:25:40.589 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-03-02 19:25:43.136 | INFO     | handlers.custom_handlers.search_handler:user_input_title:24 - Current state: UserInputState:search_movie

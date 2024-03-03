@@ -84,4 +84,9 @@ def callback_search_movie(call: CallbackQuery):
         logger.error(
             f"Failed to send photo: {response.status_code}, {response.text}"
         )
+    # отправляем описание,
+    # может превышать макс размер 4096.
+    bot.send_message(call.message.chat.id, text_2[:4096])
+    if len(text_2) > 4096:
+        bot.send_message(call.message.chat.id, text_2[4096:])
 
