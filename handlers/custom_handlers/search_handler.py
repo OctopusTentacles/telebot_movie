@@ -16,16 +16,14 @@ from urllib.parse import quote
 
 # Получить введенное пользователем название и закодировать:
 def encoding_title(message):
-    user_input = message.text.strip()
-    print(user_input)
 
+    user_input = message.text.strip()
     encoding_input = quote(user_input)
-    print(encoding_input)
 
     return create_url_api.create_url_api(encoding_input)
 
 
-
+# ==========================================================================
 @bot.callback_query_handler(func=lambda call: call.data == 'movie')
 def user_input_title(call: CallbackQuery):
     bot.set_state(call.message.chat.id, state = UserInputState.search_movie)
@@ -37,6 +35,18 @@ def user_input_title(call: CallbackQuery):
     bot.register_next_step_handler(call.message, callback_search_movie)
 
 
+@bot.callback_query_handler(func=lambda call: call.data == 'person')
+def user_input_name(call: CallbackQuery):
+    bot.set_state(call.message.chat.id, state = UserInputState.search_name)
+
+    current_state = bot.get_state(call.message.chat.id)
+    logger.info(f'Current state: {current_state}')
+
+    bot.send_message(call.message.chat.id, 'Введи имя:')
+    bot.register_next_step_handler(call.message, callback_search_person)
+
+
+# ==========================================================================
 def callback_search_movie(message):
     url = encoding_title(message)
 
@@ -63,15 +73,10 @@ def callback_search_movie(message):
 
 
 
+def callback_search_person(message):
 
+    url = encoding_title(message)
 
+    ...
 
-@bot.callback_query_handler(func=lambda call: call.data == 'person')
-def user_input_name(call: CallbackQuery):
-    bot.set_state(call.message.chat.id, state = UserInputState.search_name)
-
-    current_state = bot.get_state(call.message.chat.id)
-    logger.info(f'Current state: {current_state}')
-
-    bot.send_message(call.message.chat.id, 'Введи имя:')
 
