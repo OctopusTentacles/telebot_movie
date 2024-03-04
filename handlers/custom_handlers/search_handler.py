@@ -72,11 +72,28 @@ def callback_search_movie(message):
         bot.send_message(message.chat.id, text_2[4096:])
 
 
-
+# ==========================================================================
 def callback_search_person(message):
 
     url = encoding_title(message)
 
-    ...
+    text_1, text_2, poster = search_person_api.search_person_api(url)
 
-
+    response = requests.post(
+        f"https://api.telegram.org/bot{bot.token}/sendPhoto",
+        data={
+            "chat_id": message.chat.id,
+            "photo": poster,
+            "caption": text_1
+        }
+    )
+    # Обработка ответа от сервера Telegram
+    if response.status_code != 200:
+        logger.error(
+            f"Failed to send photo: {response.status_code}, {response.text}"
+        )
+    # отправляем описание,
+    # может превышать макс размер 4096.
+    bot.send_message(message.chat.id, text_2[:4096])
+    if len(text_2) > 4096:
+        bot.send_message(message.chat.id, text_2[4096:])
