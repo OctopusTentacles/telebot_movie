@@ -1,2 +1,9 @@
 2024-03-05 16:15:47.713 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
 2024-03-05 16:15:49.953 | INFO     | handlers.custom_handlers.search_handler:user_input_name:44 - Current state: UserInputState:search_name
+2024-03-05 16:30:53.163 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-03-05 16:30:54.699 | INFO     | handlers.custom_handlers.search_handler:user_input_title:44 - Current state: UserInputState:search_movie
+2024-03-05 16:31:12.066 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-03-05 16:31:14.563 | INFO     | handlers.custom_handlers.search_handler:user_input_name:55 - Current state: UserInputState:search_name
+2024-03-05 16:31:19.998 | ERROR    | handlers.custom_handlers.search_handler:callback_search_person:104 - Failed to send photo: 400, {"ok":false,"error_code":400,"description":"Bad Request: there is no photo in the request"}
+2024-03-05 16:33:05.225 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-03-05 16:33:10.815 | INFO     | handlers.custom_handlers.search_handler:user_input_name:55 - Current state: UserInputState:search_name

@@ -46,7 +46,7 @@ def search_person_api(url):
         contents = [data]
 
         for content in contents:
-            poster = content.get('poster', {}).get('previewUrl')
+            poster = content.get('photo')
             title = content.get('name')
             age = content.get('age')
             growth = content.get('growth')
