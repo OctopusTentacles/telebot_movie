@@ -11,3 +11,4 @@ from . import random_serial_api
 from . import random_cartoons_api
 from . import create_url_api
 from . import search_movie_api
+from . import search_person_api
