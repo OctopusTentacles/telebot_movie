@@ -6,6 +6,7 @@ import requests
 
 from api import create_url_api
 from api import search_movie_api
+from api import search_person_api
 
 from loader import bot
 from log_data import logger
