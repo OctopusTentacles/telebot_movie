@@ -4,12 +4,35 @@
 """
 
 
+import html
+import re
 import requests
 
 
 from config_data import config
 from io import BytesIO
 from log_data import logger
+
+
+def remove_html(text: str) -> str:
+    """В фактах встречаются ссылки типа -
+    <a href="/name/77564/" class="all">Дженнифер Сайм</a> 
+    И HTML-коды  - попробуем их обработать.
+
+    html.unescape:
+        преобразует HTML-коды в соответствующие символы.
+
+    pattern:
+        <(.*?)> - любое вхождение любых символов между < >.
+
+    re.sub:
+        удаляем паттерн из текста.
+    """
+    text = html.unescape(text)
+    pattern = re.compile(r'<(.*?)>')
+    text = re.sub(pattern, '', text)
+
+    return text
 
 
 @logger.catch
