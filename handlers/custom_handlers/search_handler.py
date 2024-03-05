@@ -23,6 +23,7 @@ def encoding_title(message):
 
     return create_url_movie_api.create_url_movie_api(encoding_input)
 
+
 # Получить введенное пользователем имя и закодировать:
 def encoding_name(message):
 
