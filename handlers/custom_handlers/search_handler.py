@@ -4,7 +4,7 @@
 
 import requests
 
-from api import create_url_api
+from api import create_url_movie_api
 from api import search_movie_api
 from api import search_person_api
 
@@ -21,7 +21,16 @@ def encoding_title(message):
     user_input = message.text.strip()
     encoding_input = quote(user_input)
 
-    return create_url_api.create_url_api(encoding_input)
+    return create_url_movie_api.create_url_movie_api(encoding_input)
+
+# Получить введенное пользователем имя и закодировать:
+def encoding_name(message):
+
+    user_input = message.text.strip()
+    encoding_input = quote(user_input)
+
+    return create_url_name_api.create_url_name_api(encoding_input)
+
 
 
 # ==========================================================================
@@ -76,7 +85,7 @@ def callback_search_movie(message):
 # ==========================================================================
 def callback_search_person(message):
 
-    url = encoding_title(message)
+    url = encoding_name(message)
 
     text_1, text_2, poster = search_person_api.search_person_api(url)
 

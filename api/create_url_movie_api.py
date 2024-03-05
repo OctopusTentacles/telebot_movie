@@ -13,7 +13,7 @@ from typing import Union
 
 
 @logger.catch
-def create_url_api(encoding_title: Union[str, bytes]) -> str:
+def create_url_movie_api(encoding_title: Union[str, bytes]) -> str:
     """
     Формирует URL API для поиска информации по запросу пользователя.
 
