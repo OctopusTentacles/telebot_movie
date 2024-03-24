@@ -34,7 +34,6 @@ def encoding_name(message):
     return create_url_name_api.create_url_name_api(encoding_input)
 
 
-
 # ==========================================================================
 @bot.callback_query_handler(func=lambda call: call.data == 'movie')
 def user_input_title(call: CallbackQuery):
