@@ -10,3 +10,5 @@
 2024-03-06 21:57:08.242 | INFO     | handlers.custom_handlers.search_handler:user_input_name:55 - Current state: UserInputState:search_name
 2024-03-06 21:57:57.356 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
 2024-03-06 21:58:05.391 | INFO     | handlers.custom_handlers.random_handler:bot_rand_content:22 - Current state: UserInputState:rand
+2024-04-01 21:23:38.381 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-04-01 21:23:47.194 | INFO     | handlers.custom_handlers.popular:bot_popular:19 - Current state: UserInputState:pop
