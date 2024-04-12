@@ -2,7 +2,9 @@
 
 
 from api import popular_today
-from database import save_
+
+from database import save_user_registration
+
 from keyboards.inline import main_keyboard
 from loader import bot
 from log_data import logger
@@ -14,6 +16,19 @@ from telebot.types import Message
 @bot.message_handler(commands=['start'])
 @logger.catch
 def bot_start(message: Message):
+
+    # проверка регистрации пользователя:
+    if not save_user_registration(
+        message.from_user.id,
+        message.from_user.full_name):
+        bot.send_message(
+            message.chat.id,
+            'Добро пожаловать! '
+            'Для продолжения работы, '
+            'пожалуйста, пройдите регистрацию.'
+        )
+
+
     bot.reply_to(message, f'Привет, {message.from_user.full_name}!')
 
     bot.send_message(message.chat.id, 'СЕГОДНЯ ПОПУЛЯРНОЕ:')
