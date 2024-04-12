@@ -13,6 +13,16 @@ cur_dir = os.path.dirname(__file__)
 # Инициализация файла базы данных (SQLite) в текущем dir:
 db = SqliteDatabase(os.path.join(cur_dir, 'user_history.db'))
 
+
+class UserRegistration(Model):
+    user_id = IntegerField(unique=True)
+    username = CharField()
+    favorite_movies = TextField(default='')
+    registration_date = DateTimeField(default=datetime.now)
+
+
+
+
 class UserRequest(Model):
     """Модель для запросов пользователя.
 
@@ -40,5 +50,6 @@ class UserRequest(Model):
 
 # инициализация таблицы в базе данных:
 db.connect()
+db.create_tables(UserRegistration)
 db.create_tables(UserRequest)
 db.close()
