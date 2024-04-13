@@ -11,3 +11,9 @@ def registration_button():
     Returns:
         types.InlineKeyboardMarkup: Объект кнопки "ЗАРЕГИСТРИРОВАТЬСЯ".
     """
+    keyboard = InlineKeyboardMarkup()
+    button = InlineKeyboardButton(text='ЗАРЕГИСТРИРОВАТЬСЯ', callback_data='register')
+
+    keyboard.add(button)
+
+    return keyboard
