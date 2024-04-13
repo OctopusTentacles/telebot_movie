@@ -6,6 +6,7 @@ from api import popular_today
 from database import save_user_registration
 
 from keyboards.inline import main_keyboard
+from keyboards.inline import regs_keyboard
 from loader import bot
 from log_data import logger
 # from log_data import log_decorator
@@ -21,11 +22,12 @@ def bot_start(message: Message):
     if not save_user_registration(
         message.from_user.id,
         message.from_user.full_name):
+        # Если не зарегистрирован, отправляем сообщение с кнопкой регистрации:
         bot.send_message(
             message.chat.id,
-            'Добро пожаловать! '
-            'Для продолжения работы, '
-            'пожалуйста, пройдите регистрацию.'
+            'Добро пожаловать!\n'
+            'Для продолжения необходимо зарегистрироваться!',
+            reply_markup=regs_keyboard()
         )
         return
 

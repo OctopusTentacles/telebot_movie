@@ -12,7 +12,9 @@ def regs_keyboard():
         types.InlineKeyboardMarkup: Объект кнопки "ЗАРЕГИСТРИРОВАТЬСЯ".
     """
     keyboard = InlineKeyboardMarkup()
-    button = InlineKeyboardButton(text='ЗАРЕГИСТРИРОВАТЬСЯ', callback_data='register')
+    button = InlineKeyboardButton(
+        text='🎬  ЗАРЕГИСТРИРОВАТЬСЯ  🎬', callback_data='register'
+    )
 
     keyboard.add(button)
 
