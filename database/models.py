@@ -46,7 +46,7 @@ class UserRequest(Model):
     category = CharField()
     timestamp = DateTimeField(default=datetime.now)
 
-    class Meta(type):
+    class Meta:
         """Метакласс для указания базы данных.
 
         Attributes:
