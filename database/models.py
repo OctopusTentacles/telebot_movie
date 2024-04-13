@@ -20,7 +20,8 @@ class UserRegistration(Model):
     favorite_movies = TextField(default='')
     registration_date = DateTimeField(default=datetime.now)
 
-
+    class Meta:
+        database = db
 
 
 class UserRequest(Model):
@@ -33,7 +34,7 @@ class UserRequest(Model):
         timestamp (DateTimeField): Временная метка запроса - текущее время.
     """
     user_name = CharField()
-    user_id = CharField()
+    user_id = IntegerField()
     category = CharField()
     timestamp = DateTimeField(default=datetime.now)
 
@@ -50,6 +51,5 @@ class UserRequest(Model):
 
 # инициализация таблицы в базе данных:
 db.connect()
-db.create_tables(UserRegistration)
-db.create_tables(UserRequest)
+db.create_tables([UserRegistration, UserRequest])
 db.close()
