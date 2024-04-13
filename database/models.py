@@ -15,6 +15,14 @@ db = SqliteDatabase(os.path.join(cur_dir, 'user_history.db'))
 
 
 class UserRegistration(Model):
+    """Модель для хранения зарегистрированных пользователях.
+
+    Args:
+        user_id (IntegerField): Идентификатор пользователя.    
+        user_name (CharField): Имя пользователя.
+        favorite_movies (TextField): список избранного.
+        registration_date (DateTimeField): Временная метка запроса - текущее время.
+    """
     user_id = IntegerField(unique=True)
     username = CharField()
     favorite_movies = TextField(default='')
@@ -29,7 +37,7 @@ class UserRequest(Model):
 
     Attributes:
         user_name (CharField): Имя пользователя.
-        user_id (CharField): Идентификатор пользователя.
+        user_id (IntegerField): Идентификатор пользователя.
         category (CharField): Категория запроса.
         timestamp (DateTimeField): Временная метка запроса - текущее время.
     """
