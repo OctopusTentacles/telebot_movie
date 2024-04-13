@@ -5,7 +5,7 @@ from telebot.types import InlineKeyboardButton
 from telebot.types import InlineKeyboardMarkup
 
 
-def registration_button():
+def regs_keyboard():
     """Возвращает кнопку регистрации.
 
     Returns:
