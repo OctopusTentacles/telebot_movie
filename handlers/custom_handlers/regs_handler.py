@@ -19,3 +19,8 @@ def register_user(call: CallbackQuery):
             call.message.chat.id,
             'Вы успешно зарегистрированы!'
         )
+    else:
+        bot.send_message(
+            call.message.chat.id,
+            'Что-то пошло не так...Начни сначала '
+        )
