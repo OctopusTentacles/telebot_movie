@@ -29,7 +29,6 @@ def bot_start(message: Message):
             'Для продолжения необходимо зарегистрироваться!',
             reply_markup=regs_keyboard()
         )
-        return
 
 
     bot.reply_to(message, f'Привет, {message.from_user.full_name}!')
