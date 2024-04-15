@@ -30,8 +30,8 @@ def bot_start(message: Message):
             reply_markup=regs_keyboard()
         )
 
-
-    bot.reply_to(message, f'Привет, {message.from_user.full_name}!')
+    else:
+        bot.reply_to(message, f'Привет, {message.from_user.full_name}!')
 
     bot.send_message(message.chat.id, 'СЕГОДНЯ ПОПУЛЯРНОЕ:')
     text, poster = popular_today.popular_today()

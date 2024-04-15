@@ -6,3 +6,6 @@
 2024-04-14 21:04:09.330 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
 2024-04-14 21:04:13.623 | INFO     | handlers.custom_handlers.random_handler:bot_rand_content:22 - Current state: UserInputState:rand
 2024-04-14 21:04:41.301 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-04-15 14:38:59.965 | INFO     | handlers.custom_handlers.regs_handler:register_user:16 - Current state: UserInputState:register
+2024-04-15 14:40:41.868 | INFO     | handlers.custom_handlers.regs_handler:register_user:16 - Current state: UserInputState:register
+2024-04-15 14:44:58.264 | INFO     | handlers.custom_handlers.regs_handler:register_user:16 - Current state: UserInputState:register

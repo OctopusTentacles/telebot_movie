@@ -17,32 +17,28 @@ def save_user_registration(user_id: int, user_name: str) -> bool:
         bool: True, если регистрация прошла успешно,
               False в противном случае.
     """
-    print(user_id)
-    print(user_name)
     existing_user = UserRegistration.select().where(
         UserRegistration.user_id == user_id).first()
-    print(existing_user)
-
+    
     if existing_user:
+        print('Пользователь уже существует в базе данных')
         return True
 
-    else:
-        try:
-            new_user = UserRegistration.create(
-                user_id = user_id,
-                user_name = user_name,
-                favorite_movies = '',
-                registration_date = datetime.now()
-            )
-            return True
-    
+    try:
+        new_user = UserRegistration.create(
+            user_id=user_id,
+            user_name=user_name,
+            favorite_movies='',
+            registration_date=datetime.now()
+        )
+        print('Пользователь успешно зарегистрирован')
+        return True
 
-        except IntegrityError:
-            # Если пользователь с таким user_id уже существует:
-            print('Ошибка регистрации: пользователь уже существует')
-            return False
-        except Exception as exc:
-            # Обработка других исключений:
-            print('Ошибка в базе данных', exc)
-            return False    
-        
+    except IntegrityError:
+        print('Ошибка регистрации: пользователь уже существует')
+        return False
+
+    except Exception as exc:
+        print('Ошибка в базе данных:', exc)
+        return False
+    
