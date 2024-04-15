@@ -1,4 +1,2 @@
-2024-04-15 15:41:01.405 | INFO     | handlers.custom_handlers.regs_handler:register_user:16 - Current state: UserInputState:register
-2024-04-15 15:44:33.924 | INFO     | handlers.custom_handlers.regs_handler:register_user:16 - Current state: UserInputState:register
-2024-04-15 15:46:48.343 | INFO     | handlers.custom_handlers.regs_handler:register_user:16 - Current state: UserInputState:register
-2024-04-15 15:46:48.350 | INFO     | handlers.custom_handlers.regs_handler:register_user:21 - User Artem with ID 961741922 successfully registered.
+2024-04-15 15:56:15.800 | INFO     | handlers.custom_handlers.regs_handler:register_user:16 - Current state: UserInputState:register
+2024-04-15 15:56:15.807 | INFO     | handlers.custom_handlers.regs_handler:register_user:21 - User Artem with ID 961741922 successfully registered.
