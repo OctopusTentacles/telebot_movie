@@ -42,3 +42,13 @@ def save_user_registration(user_id: int, user_name: str) -> bool:
         print('Ошибка в базе данных:', exc)
         return False
     
+
+def get_user_name(user_id):
+    try:
+        user = UserRegistration.select().where(
+            UserRegistration.user_id == user_id).first()
+        if user:
+            return user.user_name
+        
+    except Exception as exc:
+        print(f"Error fetching user name: {exc}")
