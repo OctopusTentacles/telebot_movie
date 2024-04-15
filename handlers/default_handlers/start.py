@@ -3,7 +3,8 @@
 
 from api import popular_today
 
-from database import save_user_registration
+from database import check_user_registration
+from database import get_user_name
 
 from keyboards.inline import main_keyboard
 from keyboards.inline import regs_keyboard
@@ -19,9 +20,7 @@ from telebot.types import Message
 def bot_start(message: Message):
 
     # проверка регистрации пользователя:
-    if not save_user_registration(
-        message.from_user.id,
-        message.from_user.full_name):
+    if not check_user_registration(message.from_user.id):
         # Если не зарегистрирован, отправляем сообщение с кнопкой регистрации:
         bot.send_message(
             message.chat.id,
@@ -29,18 +28,17 @@ def bot_start(message: Message):
             'Для продолжения необходимо зарегистрироваться!',
             reply_markup=regs_keyboard()
         )
-
     else:
-        bot.reply_to(message, f'Привет, {message.from_user.full_name}!')
+        bot.reply_to(message, f'Привет, {get_user_name(message.from_user.id)}!')
 
-    bot.send_message(message.chat.id, 'СЕГОДНЯ ПОПУЛЯРНОЕ:')
-    text, poster = popular_today.popular_today()
-    bot.send_photo(message.chat.id, photo=poster, caption=text)
+        bot.send_message(message.chat.id, 'СЕГОДНЯ ПОПУЛЯРНОЕ:')
+        text, poster = popular_today.popular_today()
+        bot.send_photo(message.chat.id, photo=poster, caption=text)
 
-    bot.send_message(
-        message.chat.id, 
-        '/main - ГЛАВНОЕ МЕНЮ\n'
-        '/history - Краткая история пользователя\n'
-        '/help - СПРАВКА'
-    )
+        bot.send_message(
+            message.chat.id, 
+            '/main - ГЛАВНОЕ МЕНЮ\n'
+            '/history - Краткая история пользователя\n'
+            '/help - СПРАВКА'
+        )
     
