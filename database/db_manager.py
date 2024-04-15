@@ -6,6 +6,19 @@ from .models import UserRegistration
 from peewee import IntegrityError
 
 
+def check_user_registration(user_id: int):
+    """Проверяет, зарегистрирован ли пользователь.
+
+    Args:
+        user_id (int): Идентификатор пользователя.
+
+    Returns:
+        bool: True, если пользователь зарегистрирован, False в противном случае.
+    """
+    return UserRegistration.select().where(
+        UserRegistration.user_id == user_id).exists()
+
+
 def save_user_registration(user_id: int, user_name: str) -> bool:
     """Сохраняет регистрацию пользователя в базе данных.
 
