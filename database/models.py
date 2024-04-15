@@ -24,7 +24,7 @@ class UserRegistration(Model):
         registration_date (DateTimeField): Временная метка запроса - текущее время.
     """
     user_id = IntegerField(unique=True)
-    username = CharField()
+    user_name = CharField()
     favorite_movies = TextField(default='')
     registration_date = DateTimeField(default=datetime.now)
 
