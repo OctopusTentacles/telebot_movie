@@ -2,6 +2,7 @@
 
 
 from datetime import datetime
+from log_data import logger
 from .models import UserRegistration
 
 
@@ -36,11 +37,12 @@ def save_user_registration(user_id: int, user_name: str) -> bool:
             favorite_movies='',
             registration_date=datetime.now()
         )
-        print('Пользователь успешно зарегистрирован')
         return True
 
     except Exception as exc:
-        print('Ошибка в базе данных:', exc)
+        logger.error(
+            f'Ошибка при сохранении регистрации пользователя {user_id}: {exc}'
+        )
         return False
     
 
@@ -52,4 +54,6 @@ def get_user_name(user_id):
             return user.user_name
         
     except Exception as exc:
-        print(f"Error fetching user name: {exc}")
+        logger.error(
+            f'Ошибка, пользователь отсутствует в базе: {exc}'
+        )
