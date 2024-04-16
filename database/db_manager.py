@@ -3,7 +3,6 @@
 
 from datetime import datetime
 from .models import UserRegistration
-from peewee import IntegrityError
 
 
 def check_user_registration(user_id: int):

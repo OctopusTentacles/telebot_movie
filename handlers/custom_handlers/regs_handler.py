@@ -6,8 +6,7 @@
 
 
 from database import save_user_registration
-from default_handlers.start import bot_start
-
+from handlers.default_handlers.start import bot_start
 from loader import bot
 from log_data import logger
 from states.user_input import UserInputState
@@ -45,7 +44,7 @@ def register_user(call: CallbackQuery):
         bot.send_message(
             call.message.chat.id, 'Вы успешно зарегистрированы!'
         )
-        
+
         # После успешной регистрации вызываем функцию bot_start:
         bot_start(call.message)
         
