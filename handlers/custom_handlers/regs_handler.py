@@ -46,7 +46,9 @@ def register_user(call: CallbackQuery):
         )
 
         # После успешной регистрации вызываем функцию bot_start:
-        bot_start(call.message)
+        bot.send_message(
+            call.message.chat.id, 'Нажмите /start'
+        )
         
     else:
         bot.send_message(
