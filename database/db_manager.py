@@ -57,3 +57,24 @@ def get_user_name(user_id):
         logger.error(
             f'Ошибка, пользователь отсутствует в базе: {exc}'
         )
+
+def add_favorite_movie(user_id: int, movie_name: str) -> bool:
+    """Добавляет фильм в избранное пользователя.
+
+    Args:
+        user_id (int): Идентификатор пользователя.
+        movie_name (str): Название фильма.
+
+    Returns:
+        bool: True, если фильм успешно добавлен, 
+        False в противном случае.
+    """
+    try:
+
+
+    except Exception as exs:
+        logger.error(
+            f'Ошибка при добавлении фильма в избранное: {exc}'
+        )
+        return False
+    ...
