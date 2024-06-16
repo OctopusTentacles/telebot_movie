@@ -18,7 +18,16 @@ def main_keyboard():
     button_4 = InlineKeyboardButton(text='Рандом', callback_data='rand')
     button_5 = InlineKeyboardButton(text='Поиск фильма', callback_data='movie')
     button_6 = InlineKeyboardButton(text='Поиск актера', callback_data='person')
+    button_7 = InlineKeyboardButton(text='Избранное', callback_data='favorite')
 
-    keyboard.add(button_1, button_2, button_3, button_4, button_5, button_6)
+    keyboard.add(
+        button_1, 
+        button_2, 
+        button_3, 
+        button_4, 
+        button_5, 
+        button_6, 
+        button_7
+    )
 
     return keyboard
