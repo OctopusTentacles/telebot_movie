@@ -37,6 +37,7 @@ def register_user(call: CallbackQuery):
 
     user_id = call.from_user.id
     user_name = call.from_user.full_name
+    
     if save_user_registration(user_id, user_name):
         logger.info(
             f'User {user_name} with ID {user_id} successfully registered.'
