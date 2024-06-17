@@ -39,6 +39,7 @@ def bot_start(message: Message):
             message.chat.id, 
             '/main - ГЛАВНОЕ МЕНЮ\n'
             '/history - Краткая история пользователя\n'
+            '/add_favorite <название фильма> - Добавить фильм в избранное\n'
             '/help - СПРАВКА'
         )
     
