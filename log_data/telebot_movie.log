@@ -6,3 +6,5 @@
 2024-06-17 20:50:45.047 | INFO     | handlers.custom_handlers.popular:bot_popular:19 - Current state: UserInputState:pop
 2024-06-17 20:52:03.681 | ERROR    | database.db_manager:add_favorite_movie:92 - Ошибка при добавлении фильма в избранное: Expecting value: line 1 column 1 (char 0)
 2024-06-17 20:52:30.899 | ERROR    | database.db_manager:add_favorite_movie:92 - Ошибка при добавлении фильма в избранное: Expecting value: line 1 column 1 (char 0)
+2024-06-17 21:04:07.192 | INFO     | database.db_manager:add_favorite_movie:92 - Фильм "Дюна. Часть вторая" добавлен в избранное пользователя с ID 961741922.
+2024-06-17 21:04:16.668 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main

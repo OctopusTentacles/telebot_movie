@@ -99,4 +99,29 @@ def add_favorite_movie(user_id: int, movie_name: str) -> bool:
             f'Ошибка при добавлении фильма в избранное: {exc}'
         )
         return False
-    ...
+
+def get_favorite_movie(user_id: int) -> list:
+    """Получает список избранных фильмов пользователя.
+
+    Args:
+        user_id (int): Идентификатор пользователя.
+
+    Returns:
+        list: Список названий избранных фильмов.
+    """
+    try:
+        user = UserRegistration.get(UserRegistration.user_id == user_id)
+        # Получение текущего списка избранных фильмов:
+        favorite_movies_str = user.favorite_movies
+
+        # Проверка на пустую строку и возврат пустого списка:
+        if not favorite_movies_str:
+            return []
+        
+        favorite_movies = json.loads(favorite_movies_str)
+        return favorite_movies
+    except Exception as exc:
+        logger.error(
+            f'Ошибка при получении избранных фильмов: {exc}'
+        )
+        return []
