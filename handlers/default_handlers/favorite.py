@@ -34,7 +34,7 @@ def add_favorite(message: Message):
         return
     
     # Извлечение названия фильма из сообщения пользователя
-    movie_name = message.text.replace('/add_favorite ', '').strip()
+    movie_name = message.text.replace('/add_favorite', '').strip()
 
     if not movie_name:
         bot.send_message(
