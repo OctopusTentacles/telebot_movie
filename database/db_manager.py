@@ -1,5 +1,6 @@
 """ Модуль проверки регистрации пользователей. """
 
+import json
 
 from datetime import datetime
 from log_data import logger
@@ -34,7 +35,7 @@ def save_user_registration(user_id: int, user_name: str) -> bool:
         new_user = UserRegistration.create(
             user_id=user_id,
             user_name=user_name,
-            favorite_movies='',
+            favorite_movies='[]',
             registration_date=datetime.now()
         )
         return True
@@ -70,9 +71,24 @@ def add_favorite_movie(user_id: int, movie_name: str) -> bool:
         False в противном случае.
     """
     try:
+        user = UserRegistration.get(UserRegistration.user_id == user_id)
 
+        # Получение текущего списка избранных фильмов:
+        favorite_movies = json.loads(user.favorite_movies)
 
-    except Exception as exs:
+        # Добавление нового фильма в список:
+        favorite_movies.append(favorite_movies)
+
+        # Сохранение обновленного списка обратно в базу данных:
+        user.favorite_movies = json.dumps(favorite_movies)
+        user.save()
+
+        logger.info(
+            f'Фильм "{movie_name}" добавлен в избранное пользователя с ID {user_id}.'
+        )
+        return True
+
+    except Exception as exc:
         logger.error(
             f'Ошибка при добавлении фильма в избранное: {exc}'
         )
