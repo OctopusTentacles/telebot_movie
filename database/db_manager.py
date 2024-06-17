@@ -74,10 +74,16 @@ def add_favorite_movie(user_id: int, movie_name: str) -> bool:
         user = UserRegistration.get(UserRegistration.user_id == user_id)
 
         # Получение текущего списка избранных фильмов:
-        favorite_movies = json.loads(user.favorite_movies)
+        favorite_movies_str = user.favorite_movies
+
+        # Проверка на пустую строку и инициализация пустого списка:
+        if not favorite_movies_str:
+            favorite_movies = []
+        else:
+            favorite_movies = json.loads(favorite_movies_str)
 
         # Добавление нового фильма в список:
-        favorite_movies.append(favorite_movies)
+        favorite_movies.append(movie_name)
 
         # Сохранение обновленного списка обратно в базу данных:
         user.favorite_movies = json.dumps(favorite_movies)
