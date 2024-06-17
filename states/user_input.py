@@ -16,6 +16,7 @@ class UserInputState(StatesGroup):
     search_movie = State()
     search_name = State()
     register = State()
+    favorite = State()
 
     film = State()
     serial = State()
