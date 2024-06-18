@@ -1,6 +1,7 @@
 """Модуль команды favorite из кнопки ГЛАВНОГО МЕНЮ Избранное."""
 
 
+from database import get_favorite_movie
 from keyboards.inline import type_keyboard
 from loader import bot
 from log_data import logger
@@ -27,7 +28,7 @@ def show_favorite_movies(call: CallbackQuery):
 
     user_id = call.from_user.id
     # Получение списка избранных фильмов
-    favorite_movies = get_favorite_movies(user_id)
+    favorite_movies = get_favorite_movie(user_id)
 
     if favorite_movies:
         movie_list = '\n'.join(f'{movie}'for movie in favorite_movies)
