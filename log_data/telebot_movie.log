@@ -8,3 +8,14 @@
 2024-06-17 20:52:30.899 | ERROR    | database.db_manager:add_favorite_movie:92 - Ошибка при добавлении фильма в избранное: Expecting value: line 1 column 1 (char 0)
 2024-06-17 21:04:07.192 | INFO     | database.db_manager:add_favorite_movie:92 - Фильм "Дюна. Часть вторая" добавлен в избранное пользователя с ID 961741922.
 2024-06-17 21:04:16.668 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-06-18 22:37:49.789 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-06-18 22:37:57.390 | INFO     | handlers.custom_handlers.popular:bot_popular:19 - Current state: UserInputState:pop
+2024-06-18 22:38:22.536 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-06-18 22:38:24.990 | INFO     | handlers.custom_handlers.search_handler:user_input_title:43 - Current state: UserInputState:search_movie
+2024-06-18 22:39:02.353 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-06-18 22:39:04.423 | INFO     | handlers.custom_handlers.favorite_handler:show_favorite_movies:27 - Current state: UserInputState:favorite
+2024-06-18 22:39:56.590 | INFO     | database.db_manager:add_favorite_movie:92 - Фильм "Леди Баг и Супер-Кот" добавлен в избранное пользователя с ID 961741922.
+2024-06-18 22:40:04.123 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-06-18 22:40:06.573 | INFO     | handlers.custom_handlers.favorite_handler:show_favorite_movies:27 - Current state: UserInputState:favorite
+2024-06-18 22:41:56.706 | INFO     | handlers.custom_handlers.popular:bot_popular:19 - Current state: UserInputState:pop
+2024-06-18 22:49:03.100 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
