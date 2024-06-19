@@ -37,20 +37,21 @@ def add_favorite(message: Message):
     bot.send_message(message.chat.id, '"Введите название фильма:')
 
 
+@bot.message_handler(state=UserInputState.favorite)
+@logger.catch
+def handle_favorite_name(message: Message):
+    """
+    Обработчик ввода названия фильма для добавления в избранное.
 
+    Args:
+        message (Message): Сообщение с названием фильма от пользователя.
 
+    Returns:
+        None
+    """
+    movie_name = message.text
+    user_id = message.from_user.id
 
-    
-    # Извлечение названия фильма из сообщения пользователя
-    movie_name = message.text.replace('/add_favorite', '').strip()
-
-    if not movie_name:
-        bot.send_message(
-            message.chat.id,
-            'Пожалуйста, укажите название фильма после команды /add_favorite.'
-        )
-        return
-    
     if add_favorite_movie(user_id, movie_name):
         bot.send_message(
             message.chat.id,
@@ -61,3 +62,5 @@ def add_favorite(message: Message):
             message.chat.id,
             'Что-то пошло не так... Попробуйте снова.'
         )
+    bot.delete_state(message.chat.id)
+
