@@ -19,3 +19,6 @@
 2024-06-18 22:40:06.573 | INFO     | handlers.custom_handlers.favorite_handler:show_favorite_movies:27 - Current state: UserInputState:favorite
 2024-06-18 22:41:56.706 | INFO     | handlers.custom_handlers.popular:bot_popular:19 - Current state: UserInputState:pop
 2024-06-18 22:49:03.100 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-06-19 22:08:48.591 | INFO     | database.db_manager:add_favorite_movie:92 - Фильм "Терминатор 2" добавлен в избранное пользователя с ID 961741922.
+2024-06-19 22:08:57.592 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-06-19 22:09:03.555 | INFO     | handlers.custom_handlers.favorite_handler:show_favorite_movies:27 - Current state: UserInputState:favorite

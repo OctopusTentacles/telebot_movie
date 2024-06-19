@@ -34,7 +34,7 @@ def add_favorite(message: Message):
         return
     
     bot.set_state(message.chat.id, UserInputState.favorite)
-    bot.send_message(message.chat.id, '"Введите название фильма:')
+    bot.send_message(message.chat.id, 'Введите название фильма:')
 
 
 @bot.message_handler(state=UserInputState.favorite)
