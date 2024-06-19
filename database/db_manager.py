@@ -1,4 +1,4 @@
-""" Модуль проверки регистрации пользователей. """
+""" Модуль взаимодействия с базой данных. """
 
 import json
 
@@ -125,3 +125,28 @@ def get_favorite_movie(user_id: int) -> list:
             f'Ошибка при получении избранных фильмов: {exc}'
         )
         return []
+
+def get_user_history(user_id: int) -> str:
+    """Получает историю пользователя, включая избранные фильмы.
+
+    Args:
+        user_id (int): Идентификатор пользователя.
+
+    Returns:
+        str: История пользователя.
+    """
+    try:
+        user = UserRegistration.get(UserRegistration.user_id == user_id)
+        favorite_movies_str = user.favorite_movies
+        if favorite_movies_str:
+            favorite_movies = json.loads(favorite_movies_str)
+        else:
+            favorite_movies = []
+
+        history = (f'Имя пользователя: {user.user_name}\n'
+                   f'Дата регистрации: {user.registration_date}\n'
+                   f'Избранные фильмы:\n'
+        )
+        history += '\n'.join(
+            favorite_movies
+        ) if favorite_movies else 'Нет избранных фильмов.'
