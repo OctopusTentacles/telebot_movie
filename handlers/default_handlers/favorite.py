@@ -34,6 +34,9 @@ def add_favorite(message: Message):
         return
     
     bot.set_state(message.chat.id, UserInputState.favorite)
+    current_state = bot.get_state(message.chat.id)
+    logger.info(f"Current state: {current_state}")
+
     bot.send_message(message.chat.id, 'Введите название фильма:')
 
 
@@ -57,6 +60,7 @@ def handle_favorite_name(message: Message):
             message.chat.id,
             f'Фильм "{movie_name}" добавлен в избранное.'
         )
+        logger.info(f'Add favorite {movie_name}')
     else:
         bot.send_message(
             message.chat.id,
