@@ -33,6 +33,14 @@ def add_favorite(message: Message):
         )
         return
     
+    bot.set_state(message.chat.id, UserInputState.favorite)
+    bot.send_message(message.chat.id, '"Введите название фильма:')
+
+
+
+
+
+    
     # Извлечение названия фильма из сообщения пользователя
     movie_name = message.text.replace('/add_favorite', '').strip()
 
