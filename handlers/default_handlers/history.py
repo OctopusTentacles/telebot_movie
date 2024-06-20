@@ -31,5 +31,10 @@ def user_history(message: Message):
 
     user_id = message.from_user.id
     history = get_user_history(user_id)
-    bot.send_message(message.chat.id, history)
-    
+    if history:
+        bot.send_message(message.chat.id, history)
+    else:
+        bot.send_message(
+            message.chat.id, 
+            'История пуста или произошла ошибка при её получении.'
+        )
