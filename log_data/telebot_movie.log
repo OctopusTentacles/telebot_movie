@@ -23,3 +23,10 @@
 2024-06-19 22:08:57.592 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
 2024-06-19 22:09:03.555 | INFO     | handlers.custom_handlers.favorite_handler:show_favorite_movies:27 - Current state: UserInputState:favorite
 2024-06-19 22:10:30.922 | INFO     | database.db_manager:add_favorite_movie:92 - Фильм "/history" добавлен в избранное пользователя с ID 961741922.
+2024-06-20 19:16:51.846 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-06-20 19:16:57.009 | INFO     | handlers.custom_handlers.popular:bot_popular:19 - Current state: UserInputState:pop
+2024-06-20 19:17:42.128 | INFO     | handlers.default_handlers.favorite:add_favorite:38 - Current state: UserInputState:favorite
+2024-06-20 19:17:49.993 | INFO     | database.db_manager:add_favorite_movie:92 - Фильм "Майор Гром: Игра" добавлен в избранное пользователя с ID 961741922.
+2024-06-20 19:17:50.349 | INFO     | handlers.default_handlers.favorite:handle_favorite_name:63 - Add favorite Майор Гром: Игра
+2024-06-20 19:18:02.865 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-06-20 19:18:08.356 | INFO     | handlers.custom_handlers.favorite_handler:show_favorite_movies:27 - Current state: UserInputState:favorite

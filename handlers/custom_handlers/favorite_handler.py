@@ -34,7 +34,7 @@ def show_favorite_movies(call: CallbackQuery):
         movie_list = '\n'.join(f'{movie}'for movie in favorite_movies)
         bot.send_message(
             call.message.chat.id,
-            f'Ваши избранные фильмы:\n{movie_list}'
+            f'Ваши избранные фильмы:\n\n{movie_list}'
         )    
     else:
         bot.send_message(
