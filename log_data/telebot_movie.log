@@ -30,3 +30,61 @@
 2024-06-20 19:17:50.349 | INFO     | handlers.default_handlers.favorite:handle_favorite_name:63 - Add favorite Майор Гром: Игра
 2024-06-20 19:18:02.865 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
 2024-06-20 19:18:08.356 | INFO     | handlers.custom_handlers.favorite_handler:show_favorite_movies:27 - Current state: UserInputState:favorite
+2024-06-20 19:19:50.760 | INFO     | database.db_manager:add_favorite_movie:92 - Фильм "/history" добавлен в избранное пользователя с ID 961741922.
+2024-06-20 19:19:51.014 | INFO     | handlers.default_handlers.favorite:handle_favorite_name:63 - Add favorite /history
+2024-06-20 19:20:44.508 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-06-20 19:20:47.651 | INFO     | handlers.custom_handlers.random_handler:bot_rand_content:22 - Current state: UserInputState:rand
+2024-06-20 19:21:09.276 | INFO     | handlers.default_handlers.history:user_history:29 - Current state: UserInputState:history
+2024-06-20 19:21:09.442 | ERROR    | telebot:_run_middlewares_and_handler:6720 - An error has been caught in function '_run_middlewares_and_handler', process 'MainProcess' (89644), thread 'WorkerThread2' (6165934080):
+Traceback (most recent call last):
+
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/threading.py", line 995, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x102843c40>
+    └ <WorkerThread(WorkerThread2, started daemon 6165934080)>
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/threading.py", line 1038, in _bootstrap_inner
+    self.run()
+    │    └ <function WorkerThread.run at 0x1041ae480>
+    └ <WorkerThread(WorkerThread2, started daemon 6165934080)>
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/telebot/util.py", line 90, in run
+    task(*args, **kwargs)
+    │     │       └ {'handlers': [{'function': <function bot_start at 0x1043ee2a0>, 'pass_bot': False, 'filters': {'content_types': ['text'], 'co...
+    │     └ (<telebot.types.Message object at 0x104423890>,)
+    └ <bound method TeleBot._run_middlewares_and_handler of <telebot.TeleBot object at 0x104124190>>
+> File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/telebot/__init__.py", line 6720, in _run_middlewares_and_handler
+    result = handler['function'](message)
+             │                   └ <telebot.types.Message object at 0x104423890>
+             └ {'function': <function user_history at 0x1043ef9c0>, 'pass_bot': False, 'filters': {'content_types': ['text'], 'commands': ['...
+
+  File "/Users/artem/Documents/PROGRAMMING/My/telebot/telebot_movie/handlers/default_handlers/history.py", line 34, in user_history
+    bot.send_message(message.chat.id, history)
+    │   │            │       │    │   └ None
+    │   │            │       │    └ 961741922
+    │   │            │       └ <telebot.types.Chat object at 0x104420d90>
+    │   │            └ <telebot.types.Message object at 0x104423890>
+    │   └ <function TeleBot.send_message at 0x104275e40>
+    └ <telebot.TeleBot object at 0x104124190>
+
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/telebot/__init__.py", line 1549, in send_message
+    apihelper.send_message(
+    │         └ <function send_message at 0x104258900>
+    └ <module 'telebot.apihelper' from '/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/telebot/api...
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/telebot/apihelper.py", line 264, in send_message
+    return _make_request(token, method_url, params=payload, method='post')
+           │             │      │                  └ {'chat_id': '961741922', 'text': None}
+           │             │      └ 'sendMessage'
+           │             └ '6891552753:AAFMurqBrj6ROAvut_IJQoxapZ7HQVZnaQE'
+           └ <function _make_request at 0x1042580e0>
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/telebot/apihelper.py", line 162, in _make_request
+    json_result = _check_result(method_name, result)
+                  │             │            └ <Response [400]>
+                  │             └ 'sendMessage'
+                  └ <function _check_result at 0x1042582c0>
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/telebot/apihelper.py", line 189, in _check_result
+    raise ApiTelegramException(method_name, result, result_json)
+          │                    │            │       └ {'ok': False, 'error_code': 400, 'description': 'Bad Request: message text is empty'}
+          │                    │            └ <Response [400]>
+          │                    └ 'sendMessage'
+          └ <class 'telebot.apihelper.ApiTelegramException'>
+
+telebot.apihelper.ApiTelegramException: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: message text is empty

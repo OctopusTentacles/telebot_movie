@@ -28,7 +28,10 @@ def add_favorite(message: Message):
     if not check_user_registration(user_id):
         bot.send_message(
             message.chat.id,
-            'Вы не зарегистрированы!',
+            'Вы не зарегистрированы!'
+        )
+        bot.send_message(
+            message.chat.id,
             'Пожалуйста, зарегистрируйтесь с помощью /start'
         )
         return
