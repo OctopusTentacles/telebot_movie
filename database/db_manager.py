@@ -150,6 +150,7 @@ def get_user_history(user_id: int) -> str:
         history += '\n'.join(
             favorite_movies
         ) if favorite_movies else 'Нет избранных фильмов.'
+        return history
 
     except UserRegistration.DoesNotExist:
         logger.error(f'Пользователь с ID {user_id} не найден.')
@@ -158,3 +159,4 @@ def get_user_history(user_id: int) -> str:
     except Exception as exc:
         logger.error(f'Ошибка при получении истории пользователя: {exc}')
         return 'Произошла ошибка при получении истории.'
+    
