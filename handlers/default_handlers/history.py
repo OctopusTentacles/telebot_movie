@@ -1,6 +1,7 @@
 """ Модуль команды history. """
 
 
+from database import get_user_history
 from loader import bot
 from log_data import logger
 from states.user_input import UserInputState
@@ -31,3 +32,4 @@ def user_history(message: Message):
     user_id = message.from_user.id
     history = get_user_history(user_id)
     bot.send_message(message.chat.id, history)
+    
