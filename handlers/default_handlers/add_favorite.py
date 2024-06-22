@@ -3,7 +3,7 @@
 """
 
 
-from database import add_favorite_movie, check_user_registration
+from database import add_favorite_movie
 from loader import bot
 from log_data import logger
 from states.user_input import UserInputState
@@ -23,18 +23,6 @@ def add_favorite(message: Message):
         None
     """
     user_id = message.from_user.id
-
-    # Проверка регистрации пользователя:
-    if not check_user_registration(user_id):
-        bot.send_message(
-            message.chat.id,
-            'Вы не зарегистрированы!'
-        )
-        bot.send_message(
-            message.chat.id,
-            'Пожалуйста, зарегистрируйтесь с помощью /start'
-        )
-        return
     
     bot.set_state(message.chat.id, UserInputState.waiting_favorite)
     current_state = bot.get_state(message.chat.id)
