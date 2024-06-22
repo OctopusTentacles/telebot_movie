@@ -31,3 +31,31 @@ def remove_favorite(message: Message):
         message.chat.id,
         'Введите название фильма для удаления из избранного:'
     )
+
+@bot.message_handler(state=UserInputState.remove_favorite)
+@logger.catch
+def handle_remove_favorite_name(message: Message):
+    """
+    Обработчик ввода названия фильма для удаления из избранного.
+
+    Args:
+        message (Message): Сообщение с названием фильма от пользователя.
+
+    Returns:
+        None
+    """
+    movie_name = message.text
+    user_id = message.from_user.id
+
+    if remove_favorite_movie(user_id, movie_name):
+        bot.send_message(
+            message.chat.id,
+            f'Фильм "{movie_name}" удалён из избранного.'
+        )
+        logger.info(f'Removed favorite {movie_name}')
+    else:
+        bot.send_message(
+            message.chat.id,
+            'Фильм не найден в избранном или произошла ошибка при удалении.'
+        )
+    bot.delete_state(message.chat.id)
