@@ -18,6 +18,7 @@ class UserInputState(StatesGroup):
     register = State()
     favorite = State()
     waiting_favorite = State()
+    remove_favorite = State()
 
     film = State()
     serial = State()
