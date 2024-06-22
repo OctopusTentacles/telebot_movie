@@ -159,3 +159,18 @@ def get_user_history(user_id: int) -> str:
     except Exception as exc:
         logger.error(f'Ошибка при получении истории пользователя: {exc}')
         return 'Произошла ошибка при получении истории.'
+
+def remove_favorite_name(user_id: int, movie_name: str) -> bool:
+    """
+    Удаляет фильм из избранного пользователя.
+
+    Args:
+        user_id (int): Идентификатор пользователя.
+        movie_name (str): Название фильма для удаления.
+
+    Returns:
+        bool: True, если фильм успешно удален, False в противном случае.
+    """
+    try:
+        user = UserRegistration.get(UserRegistration.user_id == user_id)
+        favorite_movies_str = user.favorite_movies
