@@ -174,3 +174,25 @@ def remove_favorite_name(user_id: int, movie_name: str) -> bool:
     try:
         user = UserRegistration.get(UserRegistration.user_id == user_id)
         favorite_movies_str = user.favorite_movies
+
+        if favorite_movies_str:
+            favorite_movies = json.loads(favorite_movies_str)
+        else:
+            favorite_movies = []
+        
+        if movie_name in favorite_movies:
+            favorite_movies.remove(movie_name)
+            user.favorite_movies = json.dumps(favorite_movies)
+            user.save()
+            return True
+        else:
+            return False
+        
+    except UserRegistration.DoesNotExist:
+        logger.error(f'Пользователь с ID {user_id} не найден.')
+        return False
+    except Exception as exc:
+        logger.error(f'Ошибка при удалении фильма из избранного: {exc}')
+        return False
+
+
