@@ -40,6 +40,7 @@ def bot_start(message: Message):
             '/main - ГЛАВНОЕ МЕНЮ\n'
             '/history - Краткая история пользователя\n'
             '/add_favorite <название фильма> - Добавить фильм в избранное\n'
+            '/remove_favorite - Удалить из избранного\n'
             '/help - СПРАВКА'
         )
     
