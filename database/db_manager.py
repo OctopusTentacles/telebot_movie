@@ -143,9 +143,9 @@ def get_user_history(user_id: int) -> str:
         else:
             favorite_movies = []
 
-        history = (f'Имя пользователя: {user.user_name}\n\n'
-                   f'Дата регистрации: {user.registration_date}\n\n'
-                   f'Избранные фильмы:\n'
+        history = (f'🆔 Имя пользователя: {user.user_name}\n\n'
+                   f'✅ Дата регистрации: {user.registration_date}\n\n'
+                   f'⭐ Избранные фильмы:\n\n'
         )
         history += '\n'.join(
             favorite_movies

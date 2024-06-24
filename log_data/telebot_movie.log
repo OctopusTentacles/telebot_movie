@@ -10,3 +10,31 @@
 2024-06-24 22:24:32.269 | INFO     | handlers.default_handlers.history:user_history:29 - Current state: UserInputState:history
 2024-06-24 22:24:56.887 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
 2024-06-24 22:25:01.082 | INFO     | handlers.custom_handlers.favorite_handler:show_favorite_movies:27 - Current state: UserInputState:favorite
+2024-06-24 22:33:01.380 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-06-24 22:33:09.251 | INFO     | handlers.default_handlers.remove_favorite:remove_favorite:28 - Current state: UserInputState:remove_favorite
+2024-06-24 22:33:24.178 | INFO     | handlers.default_handlers.remove_favorite:handle_remove_favorite_name:55 - Removed favorite /history
+2024-06-24 22:33:31.994 | INFO     | handlers.custom_handlers.favorite_handler:show_favorite_movies:27 - Current state: UserInputState:favorite
+2024-06-24 22:33:44.000 | INFO     | handlers.default_handlers.remove_favorite:remove_favorite:28 - Current state: UserInputState:remove_favorite
+2024-06-24 22:33:50.792 | INFO     | handlers.default_handlers.remove_favorite:handle_remove_favorite_name:55 - Removed favorite /history
+2024-06-24 22:33:56.170 | INFO     | handlers.custom_handlers.favorite_handler:show_favorite_movies:27 - Current state: UserInputState:favorite
+2024-06-24 22:34:08.460 | INFO     | handlers.default_handlers.remove_favorite:remove_favorite:28 - Current state: UserInputState:remove_favorite
+2024-06-24 22:34:14.381 | INFO     | handlers.default_handlers.remove_favorite:handle_remove_favorite_name:55 - Removed favorite кака
+2024-06-24 22:34:22.251 | INFO     | handlers.default_handlers.history:user_history:29 - Current state: UserInputState:history
+2024-06-24 22:34:46.280 | INFO     | handlers.default_handlers.remove_favorite:remove_favorite:28 - Current state: UserInputState:remove_favorite
+2024-06-24 22:34:55.236 | INFO     | handlers.default_handlers.remove_favorite:handle_remove_favorite_name:55 - Removed favorite Леди Баг и Супер-Кот
+2024-06-24 22:35:01.341 | INFO     | handlers.default_handlers.history:user_history:29 - Current state: UserInputState:history
+2024-06-24 22:41:45.676 | INFO     | handlers.default_handlers.history:user_history:29 - Current state: UserInputState:history
+2024-06-24 22:45:29.646 | INFO     | handlers.default_handlers.history:user_history:29 - Current state: UserInputState:history
+2024-06-24 22:47:48.141 | INFO     | handlers.default_handlers.history:user_history:29 - Current state: UserInputState:history
+2024-06-24 22:55:42.834 | INFO     | handlers.default_handlers.history:user_history:29 - Current state: UserInputState:history
+2024-06-24 22:56:04.728 | INFO     | handlers.default_handlers.remove_favorite:remove_favorite:28 - Current state: UserInputState:remove_favorite
+2024-06-24 22:56:11.100 | INFO     | handlers.default_handlers.remove_favorite:handle_remove_favorite_name:55 - Removed favorite Терминатор 2
+2024-06-24 22:56:15.976 | INFO     | handlers.default_handlers.history:user_history:29 - Current state: UserInputState:history
+2024-06-24 22:56:27.698 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-06-24 22:56:29.644 | INFO     | handlers.custom_handlers.search_handler:user_input_title:43 - Current state: UserInputState:search_movie
+2024-06-24 22:57:00.211 | INFO     | handlers.default_handlers.add_favorite:add_favorite:29 - Current state: UserInputState:waiting_favorite
+2024-06-24 22:57:07.153 | INFO     | database.db_manager:add_favorite_movie:92 - Фильм "Фуриоса: Хроники Безумного Макса   (2024)" добавлен в избранное пользователя с ID 961741922.
+2024-06-24 22:57:07.362 | INFO     | handlers.default_handlers.add_favorite:handle_favorite_name:54 - Add favorite Фуриоса: Хроники Безумного Макса   (2024)
+2024-06-24 22:57:16.541 | INFO     | handlers.default_handlers.history:user_history:29 - Current state: UserInputState:history
+2024-06-24 22:57:36.566 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-06-24 22:58:17.383 | INFO     | handlers.custom_handlers.favorite_handler:show_favorite_movies:27 - Current state: UserInputState:favorite
