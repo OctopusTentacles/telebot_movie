@@ -5,3 +5,4 @@ from .db_manager import get_user_name
 from .db_manager import add_favorite_movie
 from .db_manager import get_favorite_movie
 from .db_manager import get_user_history
+from .db_manager import remove_favorite_name
