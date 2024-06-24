@@ -3,7 +3,7 @@
 """
 
 
-from database import remove_favorite_movie
+from database import remove_favorite_name
 from loader import bot
 from log_data import logger
 from states.user_input import UserInputState
@@ -47,7 +47,7 @@ def handle_remove_favorite_name(message: Message):
     movie_name = message.text
     user_id = message.from_user.id
 
-    if remove_favorite_movie(user_id, movie_name):
+    if remove_favorite_name(user_id, movie_name):
         bot.send_message(
             message.chat.id,
             f'Фильм "{movie_name}" удалён из избранного.'
