@@ -5,3 +5,8 @@
 2024-06-20 22:06:18.666 | INFO     | handlers.custom_handlers.new_handler:bot_new_content:20 - Current state: UserInputState:new
 2024-06-20 22:07:09.234 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
 2024-06-20 22:07:11.355 | INFO     | handlers.custom_handlers.search_handler:user_input_title:43 - Current state: UserInputState:search_movie
+2024-06-24 22:24:07.638 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-06-24 22:24:13.228 | INFO     | handlers.custom_handlers.new_handler:bot_new_content:20 - Current state: UserInputState:new
+2024-06-24 22:24:32.269 | INFO     | handlers.default_handlers.history:user_history:29 - Current state: UserInputState:history
+2024-06-24 22:24:56.887 | INFO     | handlers.default_handlers.main_menu:bot_main:17 - Current state: UserInputState:main
+2024-06-24 22:25:01.082 | INFO     | handlers.custom_handlers.favorite_handler:show_favorite_movies:27 - Current state: UserInputState:favorite

@@ -27,7 +27,8 @@ DEFAULT_COMMANDS = (
     ('main', 'главное меню бота'),
     ('history', 'краткая история пользователя'),
     ('help', 'вывести справку'),
-    ('add_favorite', 'добавить в избранное')
+    ('add_favorite', 'добавить в избранное'),
+    ('remove_favorite', 'удалить из избранного'),
 )
 
 # CUSTOM_COMMANDS = (
