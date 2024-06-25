@@ -16,6 +16,6 @@ if __name__ == '__main__':
  
 # TODO 
     # регистрация пользователя DONE
-    # избранное IN PROGRESS
+    # избранное DONE
     # help доработать...
     # user states
